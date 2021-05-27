@@ -9,6 +9,7 @@ import Vue from "vue";
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import ExamListComponent from "./components/ExamListComponent";
+import ExamShowComponent from "./components/ExamShowComponent";
 
 window.Vue = require('vue').default;
 
@@ -21,6 +22,12 @@ const router = new VueRouter({
             path: '/exams',
             name: 'exam.list',
             component: ExamListComponent
+        },
+        {
+            path: '/exams/:examId',
+            name: 'exam.show',
+            component: ExamShowComponent,
+            props: true
         },
     ]
 });
