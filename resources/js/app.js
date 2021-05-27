@@ -6,9 +6,24 @@
 
 require('./bootstrap');
 import Vue from "vue";
+import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
+import ExamListComponent from "./components/ExamListComponent";
 
 window.Vue = require('vue').default;
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/exams',
+            name: 'exam.list',
+            component: ExamListComponent
+        },
+    ]
+});
 
 /**
  * The following block of code may be used to automatically register your
@@ -32,4 +47,5 @@ Vue.component('header-component', HeaderComponent);
 
 const app = new Vue({
     el: '#app',
+    router
 });
