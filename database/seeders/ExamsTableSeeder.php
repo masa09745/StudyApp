@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Exam;
 
-class ExamTableSeeder extends Seeder
+class ExamsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,10 +14,6 @@ class ExamTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 1; $i <= 10; $i++) {
-            Exam::create([
-                'exam_date'.$i
-            ]);
-        }
+        \App\Models\Exam::factory()->count(10)->create();
     }
 }
