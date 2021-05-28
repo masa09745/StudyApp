@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    examId: Number
+    examId: String
   }
 }
 </script>
