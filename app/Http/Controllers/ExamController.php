@@ -30,10 +30,9 @@ class ExamController extends Controller
         $exam->save();
     }
 
-    public function destroy(Exam $exam)
+    public function destroy($id)
     {
+        $exam = \App\Models\Exam::find($id);
         $exam->delete();
-
-        return $exam;
     }
 }

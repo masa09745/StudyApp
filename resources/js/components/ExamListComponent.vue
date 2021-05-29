@@ -25,7 +25,7 @@
             </router-link>
           </td>
           <td>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" v-on:click="deleteExam(exam.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -45,6 +45,12 @@ export default {
       axios.get('/api/exams')
         .then((res) => {
           this.exams = res.data;
+        });
+    },
+    deleteExam(id) {
+      axios.delete('/api/exams/' +id)
+        .then((res) => {
+          this.getExams();
         });
     }
   },
