@@ -28,4 +28,11 @@ class ExamController extends Controller
 
         return $exam;
     }
+
+    public function destroy(Exam $exam)
+    {
+        $exam->delete();
+
+        return $exam;
+    }
 }

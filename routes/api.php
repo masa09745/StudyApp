@@ -17,3 +17,4 @@ Route::get('/exams', 'ExamController@index');
 Route::post('/exams', 'ExamController@create');
 Route::get('/exams/{exam}', 'ExamController@show');
 Route::put('/exams/{exam}', 'ExamController@update');
+Route::delete('/exams/{exam}', 'ExamController@destroy');
