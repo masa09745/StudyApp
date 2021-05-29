@@ -11,55 +11,21 @@
       </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>2021/03</td>
+        <tr v-for="(exam, index) in exams" :key="index">
+          <th scope="row">{{ exam.id }}</th>
+          <td>{{ exam.exam_date}}</td>
           <td>
-            <router-link v-bind:to="{name: 'exam.show', params: {examId: 1}}">
+            <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id }}">
               <button class="btn btn-primary">Show</button>
             </router-link>
           </td>
           <td>
-            <router-link v-bind:to="{name: 'exam.edit', params: {examId: 1}}">
+            <router-link v-bind:to="{name: 'exam.edit', params: {examId: exam.id }}">
               <button class="btn btn-success">Edit</button>
             </router-link>
           </td>
           <td>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>2020/11</td>
-          <td>
-            <router-link v-bind:to="{name: 'exam.show', params: {examId: 2}}">
-              <button class="btn btn-primary">Show</button>
-            </router-link>
-          </td>
-          <td>
-            <router-link v-bind:to="{name: 'exam.edit', params: {examId: 2}}">
-              <button class="btn btn-success">Edit</button>
-            </router-link>
-          </td>
-          <td>
-            <button class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>2020/07</td>
-          <td>
-            <router-link v-bind:to="{name: 'exam.show', params: {examId: 3}}">
-              <button class="btn btn-primary">Show</button>
-            </router-link>
-          </td>
-          <td>
-            <router-link v-bind:to="{name: 'exam.edit', params: {examId: 3}}">
-              <button class="btn btn-success">Edit</button>
-            </router-link>
-          </td>
-          <td>
-            <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" v-on:click="deleteExam(exam.id)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -68,5 +34,28 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data: function() {
+    return {
+      exams: []
+    }
+  },
+  methods: {
+    getExams(){
+      axios.get('/api/exams')
+        .then((res) => {
+          this.exams = res.data;
+        });
+    },
+    deleteExam(id) {
+      axios.delete('/api/exams/' +id)
+        .then((res) => {
+          this.getExams();
+        });
+    }
+  },
+  mounted() {
+    this.getExams();
+  }
+}
 </script>

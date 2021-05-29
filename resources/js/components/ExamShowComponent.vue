@@ -5,11 +5,11 @@
         <form>
           <div class="form-group row border-bottom">
             <label for="id" class="col-sm-3 col-form-label">ID</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="id" v-bind:value="examId">
+            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="id" v-model="exam.id">
           </div>
           <div class="form-group row border-bottom">
             <label for="ExamDate" class="col-sm-3 col-form-label">Exam Date</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" value="2021/03">
+            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" v-model="exam.exam_date">
           </div>
         </form>
       </div>
@@ -20,7 +20,24 @@
 <script>
 export default {
   props: {
-    examId: String
+    examId: Number
+  },
+
+  data: function () {
+    return {
+      exam: {}
+    }
+  },
+  methods: {
+    getExam() {
+      axios.get('/api/exams/' + this.examId)
+        .then((res) => {
+          this.exam = res.data;
+        });
+    }
+  },
+  mounted() {
+    this.getExam();
   }
 }
 </script>

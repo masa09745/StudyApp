@@ -14,6 +14,6 @@ class ExamsTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Exam::factory()->count(10)->create();
+        Exam::factory()->count(10)->create();
     }
 }
