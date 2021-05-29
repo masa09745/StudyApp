@@ -10,4 +10,9 @@ class ExamController extends Controller
     {
         return Exam::all();
     }
+
+    public function show(Exam $exam)
+    {
+        return $exam;
+    }
 }

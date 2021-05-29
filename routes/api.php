@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/exams', 'ExamController@index');
+Route::get('/exams/{exam}', 'ExamController@show');
