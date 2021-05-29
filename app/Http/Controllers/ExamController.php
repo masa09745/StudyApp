@@ -17,8 +17,9 @@ class ExamController extends Controller
         return Exam::create($request->all());
     }
 
-    public function show(Exam $exam)
+    public function show($id)
     {
+        $exam = \App\Models\Exam::find($id);
         return $exam;
     }
 
