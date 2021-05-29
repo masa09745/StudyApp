@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ExamController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/exams', 'ExamController@index');
+Route::get('/exams', [ExamController::class, 'index']);
 Route::post('/exams', 'ExamController@create');
 Route::get('/exams/{exam}', 'ExamController@show');
 Route::put('/exams/{exam}', 'ExamController@update');

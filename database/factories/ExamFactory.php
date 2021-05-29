@@ -12,7 +12,7 @@ class ExamFactory extends Factory
      *
      * @var string
      */
-    protected $model = \App\Models\Exam::class;
+    protected $model = Exam::class;
 
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class ExamFactory extends Factory
     public function definition()
     {
         return [
-            'exam_date' => $this->faker->monthName
+            'exam_date' => $this->faker->monthName()
         ];
     }
 }

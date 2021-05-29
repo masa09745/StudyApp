@@ -9,7 +9,7 @@ class ExamController extends Controller
 {
     public function index()
     {
-        return Exam::all();
+        return \App\Models\Exam::all();
     }
 
     public function store(Request $request)
