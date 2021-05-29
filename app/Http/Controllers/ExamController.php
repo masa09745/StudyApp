@@ -14,7 +14,7 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        return Exam::create($request->all());
+        return \App\Models\Exam::create($request->all());
     }
 
     public function show($id)
