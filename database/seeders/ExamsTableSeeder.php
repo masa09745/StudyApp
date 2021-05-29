@@ -3,17 +3,17 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Exam;
 
-class DatabaseSeeder extends Seeder
+class ExamsTableSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-       $this->call
-       (ExamsTableSeeder::class);
+        \App\Models\Exam::factory()->count(10)->create();
     }
 }
