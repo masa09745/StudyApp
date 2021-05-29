@@ -5,7 +5,7 @@
         <form>
           <div class="form-group row border-bottom">
             <label for="id" class="col-sm-3 col-form-label">ID</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="id" v-bind:value="exam.id">
+            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="id" v-model="exam.id">
           </div>
           <div class="form-group row border-bottom">
             <label for="ExamDate" class="col-sm-3 col-form-label">Exam Date</label>
@@ -20,8 +20,9 @@
 <script>
 export default {
   props: {
-    examId: String
+    examId: Number
   },
+
   data: function () {
     return {
       exam: {}

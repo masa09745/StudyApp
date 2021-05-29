@@ -23,11 +23,11 @@ class ExamController extends Controller
         return $exam;
     }
 
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request, $id)
     {
-        $exam->update($request->all());
-
-        return $exam;
+        $exam = \App\Models\Exam::find($id);
+        $exam->exam_date = $request->exam_date;
+        $exam->save();
     }
 
     public function destroy(Exam $exam)
