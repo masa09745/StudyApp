@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/exams', 'ExamController@index');
+Route::post('/exams', 'ExamController@create');
 Route::get('/exams/{exam}', 'ExamController@show');
