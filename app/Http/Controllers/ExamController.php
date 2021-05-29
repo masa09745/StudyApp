@@ -21,4 +21,11 @@ class ExamController extends Controller
     {
         return $exam;
     }
+
+    public function update(Request $request, Exam $exam)
+    {
+        $exam->update($request->all());
+
+        return $exam;
+    }
 }
