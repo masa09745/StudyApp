@@ -21,7 +21,7 @@
 <script>
 export default {
   props: {
-    examId: Number
+    examId: String
   },
     data: function() {
       return {

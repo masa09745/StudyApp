@@ -15,12 +15,12 @@
           <th scope="row">{{ exam.id }}</th>
           <td>{{ exam.exam_date}}</td>
           <td>
-            <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id }}">
+            <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id.toString() }}">
               <button class="btn btn-primary">Show</button>
             </router-link>
           </td>
           <td>
-            <router-link v-bind:to="{name: 'exam.edit', params: {examId: exam.id }}">
+            <router-link v-bind:to="{name: 'exam.edit', params: {examId: exam.id.toString() }}">
               <button class="btn btn-success">Edit</button>
             </router-link>
           </td>
