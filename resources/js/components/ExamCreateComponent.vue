@@ -17,7 +17,7 @@
               <label :for="'subject' + index" class="form-check-label" >{{ subject }}</label>
             </div>
           </div>
-          <p>Checked Subjects: {{ Subject}}</p>
+          <p>Checked Subjects: {{ Subject }}</p>
           </div>
           <button type="submit" class="btn btn-primary">作成</button>
         </form>
