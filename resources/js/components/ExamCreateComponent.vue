@@ -10,14 +10,10 @@
           </div>
           <div class="form-group">
           <p class="col-form-label" for="Subject">科目</p>
-
-          <div v-for="(subject, index) in subjects" :key="index" class="form-check form-check-inline">
-            <div class="form-check form-check-inline">
-              <input type="checkbox" :id="'subject' + index" :value="subject" v-model="Subject" class="form-check-input">
-              <label :for="'subject' + index" class="form-check-label" >{{ subject }}</label>
-            </div>
-          </div>
-          <p>Checked Subjects: {{ Subject }}</p>
+          <select class="form-control" v-model="subjectId">
+            <option value=""></option>
+            <option v-for="(subject,id) in subjects" :key="id" :value="id" v-text="subject"></option>
+          </select>
           </div>
           <button type="submit" class="btn btn-primary">作成</button>
         </form>
@@ -32,8 +28,13 @@ export default {
   data: function() {
     return {
       exam: {},
-      subjects: ['法規', '機体', '発動機', '電気・電子装備品'],
-      Subject:[]
+      subjectId: '',
+      subjects:{
+        1: '法規',
+        2: '機体',
+        3: '発動機',
+        4: '電気・電子装備品',
+      },
     }
   },
   methods: {
