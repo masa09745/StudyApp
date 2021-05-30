@@ -12,8 +12,12 @@
           <p class="col-form-label" for="Subject">科目</p>
 
           <div v-for="(subject, index) in subjects" :key="index" class="form-check form-check-inline">
-            <div>{{ subject.subject }}</div>
+            <div class="form-check form-check-inline">
+              <input type="checkbox" :id="'subject' + index" :value="subject" v-model="checkedSubjects" class="form-check-input">
+              <label :for="'subject' + index" class="form-check-label" >{{ subject.subject }}</label>
+            </div>
           </div>
+          <p>Checked Subjects: {{ checkedSubjects }}</p>
           </div>
           <button type="submit" class="btn btn-primary">作成</button>
         </form>
@@ -28,7 +32,8 @@ export default {
   data: function() {
     return {
       exam: {},
-      subjects: []
+      subjects: [],
+      checkedSubjects:[]
     }
   },
   methods: {
@@ -38,7 +43,6 @@ export default {
           this.subjects =res.data;
         })
     },
-
     submit() {
       axios.post('/api/exams', this.exam)
         .then((res) => {
