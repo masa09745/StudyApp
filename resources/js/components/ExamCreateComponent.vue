@@ -10,21 +10,9 @@
           </div>
           <div class="form-group">
           <p class="col-form-label" for="Subject">科目</p>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="law" value="law" >
-            <label class="form-check-label" for="law">法規</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="airplane" value="airplane" >
-            <label class="form-check-label" for="airplane">機体</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="engine" value="engine" >
-            <label class="form-check-label" for="engine">発動機</label>
-          </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="checkbox" id="elec_equipment" value="elec_equipment" >
-            <label class="form-check-label" for="elec_equipment">電気/電子装備品</label>
+
+          <div v-for="(subject, index) in subjects" :key="index" class="form-check form-check-inline">
+            <div>{{ subject.subject }}</div>
           </div>
           </div>
           <button type="submit" class="btn btn-primary">作成</button>
@@ -39,16 +27,27 @@ export default {
 
   data: function() {
     return {
-      exam: {}
+      exam: {},
+      subjects: []
     }
   },
   methods: {
+    getSubjects(){
+      axios.get('/api/subjects')
+        .then((res) =>{
+          this.subjects =res.data;
+        })
+    },
+
     submit() {
       axios.post('/api/exams', this.exam)
         .then((res) => {
           this.$router.push({name: 'exam.list'});
         });
     }
+  },
+  mounted() {
+    this.getSubjects();
   }
 }
 </script>

@@ -25,7 +25,7 @@ class SubjectTableSeeder extends Seeder
                 'subject' => '発動機'
             ],
             [
-                'subject' => '電気/電子装備品'
+                'subject' => '電気・電子装備品'
             ]
         ]);
     }
