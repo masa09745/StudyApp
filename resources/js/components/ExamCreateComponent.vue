@@ -10,7 +10,7 @@
           </div>
           <div class="form-group">
           <p class="col-form-label" for="Subject">科目</p>
-          <select class="form-control" v-model="subjectId">
+          <select class="form-control" v-model="exam.subject_id">
             <option value=""></option>
             <option v-for="(subject,id) in subjects" :key="id" :value="id" v-text="subject"></option>
           </select>
@@ -28,7 +28,6 @@ export default {
   data: function() {
     return {
       exam: {},
-      subjectId: '',
       subjects:{
         1: '法規',
         2: '機体',
