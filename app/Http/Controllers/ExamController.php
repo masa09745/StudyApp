@@ -4,16 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Exam;
+use App\Models\Subject;
+
 class ExamController extends Controller
 {
     public function index()
     {
-        return \App\Models\Exam::all();
+        return Exam::all();
     }
 
     public function store(Request $request)
     {
-        return \App\Models\Exam::create($request->all());
+        $exam = Exam::create($request->all());
+        $exam->subjects()->attach(request()->subjects);
     }
 
     public function show($id)

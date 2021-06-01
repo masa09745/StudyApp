@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Subject;
 class SubjectController extends Controller
 {
     public function __construct()
@@ -12,6 +12,6 @@ class SubjectController extends Controller
 
     public function index()
     {
-        return \App\Models\Subject::all();
+        return Subject::all();
     }
 }
