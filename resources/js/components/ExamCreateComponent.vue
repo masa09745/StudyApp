@@ -6,7 +6,7 @@
         <form v-on:submit.prevent="submit">
           <div class="form-group">
             <label for="ExamDate" class="col-form-label">試験日</label>
-            <input type="text" class= "form-control" id="ExamDate" v-model="exam.exam_date">
+            <input type="text" class= "form-control" id="ExamDate" v-model="exam.date">
           </div>
           <button type="submit" class="btn btn-primary">作成</button>
         </form>

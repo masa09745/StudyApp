@@ -5,7 +5,7 @@
         <form>
           <div class="form-group row border-bottom">
             <label for="ExamDate" class="col-sm-3 col-form-label">Exam Date</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" v-model="exam.exam_date">
+            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" v-model="exam.date">
           </div>
         </form>
       </div>

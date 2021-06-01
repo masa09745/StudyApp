@@ -9,7 +9,7 @@
           </div>
           <div class="form-group row">
             <label for="ExamDate" class="col-sm-3 col-form-label">試験日</label>
-            <input type="text" class="col-sm-9 form-control" id="ExamDate" v-model="exam.exam_date">
+            <input type="text" class="col-sm-9 form-control" id="ExamDate" v-model="exam.date">
           </div>
           <button type="submit" class="btn btn-primary">更新</button>
         </form>
