@@ -22,20 +22,20 @@ class ExamController extends Controller
 
     public function show($id)
     {
-        $exam = \App\Models\Exam::find($id);
+        $exam = Exam::find($id);
         return $exam;
     }
 
     public function update(Request $request, $id)
     {
-        $exam = \App\Models\Exam::find($id);
+        $exam = Exam::find($id);
         $exam->exam_date = $request->exam_date;
         $exam->save();
     }
 
     public function destroy($id)
     {
-        $exam = \App\Models\Exam::find($id);
+        $exam = Exam::find($id);
         $exam->delete();
     }
 }
