@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Exam extends Model
+class Subject extends Model
 {
     protected $fillable = [
-        'date'
+        'name',
     ];
-    
-    public function Subjects()
+
+    public function Exams()
     {
-        return $this->belongsToMany(Subject::class)->withTimestamps();
+        return $this->belongsToMany(Exam::class)->withTimestamps();
     }
+
     use HasFactory;
 }

@@ -13,7 +13,7 @@
       <tbody>
         <tr v-for="(exam, index) in exams" :key="index">
           <th scope="row">{{ exam.id }}</th>
-          <td>{{ exam.exam_date}}</td>
+          <td>{{ exam.date}}</td>
           <td>
             <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id.toString() }}">
               <button class="btn btn-primary">Show</button>
