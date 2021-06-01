@@ -13,7 +13,7 @@ class Subject extends Model
 
     public function Exams()
     {
-        return $this->belongsToMany('App\Models\Exam')->withTimestamps();
+        return $this->belongsToMany(Exam::class)->withTimestamps();
     }
 
     use HasFactory;

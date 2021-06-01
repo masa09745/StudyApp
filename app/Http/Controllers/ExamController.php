@@ -17,7 +17,7 @@ class ExamController extends Controller
     public function store(Request $request)
     {
         $exam = Exam::create($request->all());
-        $exam->subjects()->attach(request()->subjects);
+        $exam->subjects()->attach(Subject::all());
     }
 
     public function show($id)
