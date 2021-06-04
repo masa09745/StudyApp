@@ -16,6 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['Middleware' => ['api']], function(){
   Route::resource('exams', 'ExamController');
-  Route::resource('exam.subjects', 'SubjectController');
+  Route::resource('subjects', 'SubjectController');
 });
 

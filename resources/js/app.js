@@ -44,7 +44,7 @@ const router = new VueRouter({
             props: true
         },
         {
-            path: '/exams/:examId/subjects/:subjectId',
+            path: '/subjects/:subjectId',
             name: 'subject.show',
             component: SubjectShowComponent,
             props: true

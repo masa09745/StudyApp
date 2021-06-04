@@ -13,7 +13,7 @@
         <tr v-for="(exam, index) in exams" :key="index">
           <td scope="row" style="vertical-align: middle">{{ exam.date }}</td>
           <td v-for="(subject, index) in exam.subjects" :key="index">
-            <router-link v-bind:to="{name: 'subject.show' , params:{examId: exam.id.toString(), subjectId: subject.id.toString()}}" >
+            <router-link v-bind:to="{name: 'subject.show' , params: {subjectId: subject.id.toString()}}" >
               <button class="btn btn-success">{{ subject.name }}</button>
             </router-link>
           </td>

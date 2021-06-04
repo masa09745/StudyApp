@@ -1,32 +1,36 @@
 <template>
   <div class="container">
-    <p>科目トップページのテスト</p>
+    <exam-show-component>
   </div>
 </template>
 
 <script>
+import ExamShowComponent from './ExamShowComponent.vue';
 export default {
+  components: { ExamShowComponent },
 
   props: {
-    examId: String,
     subjectId: String,
   },
 
   data: function() {
     return {
-      subject: {}
+      subject: {},
     }
   },
-  methods: {
+
+  methods:{
     getSubject() {
-      axios.get('/api/exams/' + this.examId + '/subjects/' + this.subjectId)
+      axios.get('/api/subjects/' + this.subjectId)
         .then((res) => {
           this.subject = res.data;
         });
     }
   },
+
   mounted() {
     this.getSubject();
   }
+
 }
 </script>
