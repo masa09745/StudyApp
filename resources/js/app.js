@@ -12,6 +12,7 @@ import ExamListComponent from "./components/ExamListComponent";
 import ExamCreateComponent from "./components/ExamCreateComponent";
 import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
+import SubjectIndexComponent from "./components/SubjectIndexComponent";
 
 window.Vue = require('vue').default;
 
@@ -40,6 +41,12 @@ const router = new VueRouter({
             path: '/exams/:examId/edit',
             name: 'exam.edit',
             component: ExamEditComponent,
+            props: true
+        },
+        {
+            path: '/exams/:examId/subject',
+            name: 'subject.index',
+            component: SubjectIndexComponent,
             props: true
         }
 
