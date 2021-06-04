@@ -1,11 +1,16 @@
 <template>
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-6">
+    <div class="row">
+      <div class="col-3">
         <form>
           <div class="form-group row border-bottom">
-            <label for="ExamDate" class="col-sm-3 col-form-label">Exam Date</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" v-model="exam.date">
+            <label for="ExamDate" class="col col-form-label">試験日</label>
+            <div class="col">
+              <input type="text" class="form-control-plaintext" readonly id="ExamDate" v-model="exam.date">
+            </div>
+          </div>
+          <div>
+            <input type="text" class="form-control-plaintext" readonly id="subjectId" v-for="(subject, index) in exam.subjects" :key="index" v-model="subject.name">
           </div>
         </form>
       </div>
