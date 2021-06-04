@@ -44,7 +44,7 @@ const router = new VueRouter({
             props: true
         },
         {
-            path: '/exams/:examId/subject',
+            path: '/exams/:examId/subjects',
             name: 'subject.index',
             component: SubjectIndexComponent,
             props: true
