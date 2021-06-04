@@ -9,6 +9,11 @@ use App\Models\Subject;
 
 class ExamController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('JpJsonResponse');
+    }
+    
     public function index()
     {
         return Exam::all();
@@ -36,7 +41,7 @@ class ExamController extends Controller
 
     public function show($id)
     {
-        $exam = Exam::find($id);
+        $exam = Exam::with('subjects')->find($id);
         return $exam;
     }
 
