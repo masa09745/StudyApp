@@ -13,10 +13,10 @@ class ExamController extends Controller
     {
         $this->middleware('JpJsonResponse');
     }
-    
+
     public function index()
     {
-        return Exam::all();
+        return Exam::with('subjects')->get();
     }
 
     public function store(Request $request)
