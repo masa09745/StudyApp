@@ -1,5 +1,5 @@
 <template>
-  <div class="col-7">
+  <div class="col">
     科目のshow
   </div>
 </template>
