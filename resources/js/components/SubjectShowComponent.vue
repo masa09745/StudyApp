@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    科目のshow
+    <div>{{ subject.name }}</div>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ export default {
     examId: String,
     subjectId: String
   },
-
+  
   data: function() {
     return {
       subject: {},
@@ -21,13 +21,12 @@ export default {
   },
 
   methods:{
-
     getSubject() {
       axios.get('/api/subjects/' + this.subjectId)
         .then((res) => {
           this.subject = res.data;
         });
-    }
+    },
   },
 
   mounted() {
