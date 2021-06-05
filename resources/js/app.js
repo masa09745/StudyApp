@@ -10,6 +10,7 @@ import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import ExamListComponent from "./components/ExamListComponent";
 import ExamCreateComponent from "./components/ExamCreateComponent";
+import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
 
@@ -31,18 +32,26 @@ const router = new VueRouter({
             component: ExamCreateComponent
         },
         {
+            path: '/exams/:examId',
+            name: 'exam.show',
+            component: ExamShowComponent,
+            props: true,
+            children: [
+              {
+                path: 'subjects/:subjectId',
+                name: 'subject.show',
+                component: SubjectShowComponent,
+                props: true
+              }
+
+            ]
+        },
+        {
             path: '/exams/:examId/edit',
             name: 'exam.edit',
             component: ExamEditComponent,
             props: true
-        },
-        {
-            path: '/subjects/:subjectId',
-            name: 'subject.show',
-            component: SubjectShowComponent,
-            props: true
         }
-
     ]
 });
 

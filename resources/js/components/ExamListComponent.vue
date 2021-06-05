@@ -4,16 +4,16 @@
       <thead class="thead-dark">
       <tr>
         <th scope="col">Date</th>
-        <th colspan="4" scope="rowgroup">Subject</th>
-        <th scope="col">Delet</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
       </tr>
       </thead>
       <tbody>
         <tr v-for="(exam, index) in exams" :key="index">
           <td scope="row" style="vertical-align: middle">{{ exam.date }}</td>
-          <td v-for="(subject, index) in exam.subjects" :key="index">
-            <router-link v-bind:to="{name: 'subject.show' , params: {subjectId: subject.id.toString()}}" >
-              <button class="btn btn-success">{{ subject.name }}</button>
+          <td>
+            <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id.toString() }}">
+              <button class="btn btn-primary">Show</button>
             </router-link>
           </td>
           <td>

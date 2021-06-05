@@ -1,23 +1,16 @@
 <template>
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row justify-content-center ">
-        <subject-menu-component />
-        <question-component />
-      </div>
-    </div>
+  <div class="col-7">
+    科目のshow
   </div>
 </template>
 
 <script>
 
-import SubjectMenuComponent from './SubjectMenuComponent.vue';
-import questionComponent from './QuestionComponent';
 
 export default {
-  components: { SubjectMenuComponent, questionComponent },
 
   props: {
+    examId: String,
     subjectId: String
   },
 
@@ -28,6 +21,7 @@ export default {
   },
 
   methods:{
+
     getSubject() {
       axios.get('/api/subjects/' + this.subjectId)
         .then((res) => {
