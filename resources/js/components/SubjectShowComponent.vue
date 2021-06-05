@@ -1,16 +1,24 @@
 <template>
-  <div class="container">
-    <exam-show-component>
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row justify-content-center ">
+        <subject-menu-component />
+        <question-component />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ExamShowComponent from './ExamShowComponent.vue';
+
+import SubjectMenuComponent from './SubjectMenuComponent.vue';
+import questionComponent from './QuestionComponent';
+
 export default {
-  components: { ExamShowComponent },
+  components: { SubjectMenuComponent, questionComponent },
 
   props: {
-    subjectId: String,
+    subjectId: String
   },
 
   data: function() {
