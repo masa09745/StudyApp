@@ -2,7 +2,7 @@
   <div>
     <ul class="nav justify-content-center">
       <li class="nav-item" v-for="(subject, index) in exam.subjects" :key="index">
-        <router-link class="nav-link text-dark"  v-bind:to="{name: 'subject.show', params: {examId: subject.exam_id, subjectId: subject.id.toString() }}">
+        <router-link class="nav-link text-dark"  v-bind:to="{name: 'subject.show', params: {examId: subject.exam_id.toString(), subjectId: subject.id.toString(), subjectName: subject.name}}">
         {{ subject.name }}
         </router-link>
       </li>
@@ -16,14 +16,6 @@ export default {
     exam:{}
   },
 
-  data: function() {
-    return{
-      subjects: {}
-    }
-  },
-  methods: {
-
-  }
 
 }
 </script>

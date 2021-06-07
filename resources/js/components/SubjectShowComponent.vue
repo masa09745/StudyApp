@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <div>{{ subject.name }}</div>
+    <div>{{ subjectName }}</div>
   </div>
 </template>
 
@@ -11,12 +11,19 @@ export default {
 
   props: {
     examId: String,
-    subjectId: String
+    subjectId: String,
+    subjectName: String
   },
   
+  beforeRouteUpdate (to, from, next) {
+    this.id = to.params.subjectId;
+    next();
+
+  },
+
   data: function() {
     return {
-      subject: {},
+      targetId: this.subjectId
     }
   },
 
