@@ -16,5 +16,10 @@ class Subject extends Model
         return $this->belongsTo(Exam::class);
     }
 
+    public function Questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     use HasFactory;
 }
