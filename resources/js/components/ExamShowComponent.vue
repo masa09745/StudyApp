@@ -1,20 +1,26 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-sm-6">
-        <form>
-          <div class="form-group row border-bottom">
-            <label for="ExamDate" class="col-sm-3 col-form-label">Exam Date</label>
-            <input type="text" class="col-sm-9 form-control-plaintext" readonly id="ExamDate" v-model="exam.date">
+  <div class="container-fluid">
+    <div class="container-sm">
+      <div>
+        <div :id="$route.params.id">
+          <div class="d-flex justify-content-center border-bottom">
+            <div style="margin-right: 10px">試験日</div>
+            <div>{{exam.date}}</div>
           </div>
-        </form>
+          <subjetc-list-component :exam='exam' />
+        </div>
       </div>
+      <router-view/>
     </div>
   </div>
 </template>
 
 <script>
+import SubjetcListComponent from './SubjetcListComponent.vue';
+
 export default {
+
+  components: { SubjetcListComponent },
 
   props: {
     examId: String
@@ -31,7 +37,7 @@ export default {
         .then((res) => {
           this.exam = res.data;
         });
-    }
+    },
   },
   mounted() {
     this.getExam();

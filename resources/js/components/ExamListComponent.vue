@@ -1,31 +1,23 @@
 <template>
   <div class="container">
     <table class="table table-hover">
-      <thead class="thead-light">
+      <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Exam Date</th>
-        <th scope="col">Show</th>
+        <th scope="col">Date</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
       </thead>
       <tbody>
         <tr v-for="(exam, index) in exams" :key="index">
-          <th scope="row">{{ exam.id }}</th>
-          <td>{{ exam.date}}</td>
+          <td scope="row" style="vertical-align: middle">{{ exam.date }}</td>
           <td>
             <router-link v-bind:to="{name: 'exam.show', params: {examId: exam.id.toString() }}">
               <button class="btn btn-primary">Show</button>
             </router-link>
           </td>
           <td>
-            <router-link v-bind:to="{name: 'exam.edit', params: {examId: exam.id.toString() }}">
-              <button class="btn btn-success">Edit</button>
-            </router-link>
-          </td>
-          <td>
-              <button class="btn btn-danger" v-on:click="deleteExam(exam.id)">Delete</button>
+            <button class="btn btn-danger" v-on:click="deleteExam(exam.id)">Delete</button>
           </td>
         </tr>
       </tbody>

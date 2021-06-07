@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subject;
+
 class SubjectController extends Controller
 {
     public function __construct()
@@ -10,8 +11,11 @@ class SubjectController extends Controller
         $this->middleware('JpJsonResponse');
     }
 
-    public function index()
+    public function show($id)
+
     {
-        return Subject::all();
+        $subject = Subject::select(['name','exam_id'])->with('Exam')->find($id);
+
+        return $subject;
     }
 }

@@ -11,9 +11,9 @@ class Subject extends Model
         'name',
     ];
 
-    public function Exams()
+    public function Exam()
     {
-        return $this->belongsToMany(Exam::class)->withTimestamps();
+        return $this->belongsTo(Exam::class);
     }
 
     use HasFactory;

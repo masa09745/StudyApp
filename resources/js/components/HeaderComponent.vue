@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid bg-dark mb-5">
-    <div class="container">
+    <div class="container-sm">
       <nav class="navbar navbar-dark">
         <span class="navbar-brand mb-0 h1">Study App</span>
         <div>
