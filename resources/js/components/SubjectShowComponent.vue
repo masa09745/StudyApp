@@ -14,6 +14,11 @@ export default {
     subjectId: String,
   },
   
+  beforeRouteUpdate (to, from, next) {
+    this.id = to.params.subjectId;
+    next();
+  },
+  
   data: function() {
     return {
       id: this.subjectId,
