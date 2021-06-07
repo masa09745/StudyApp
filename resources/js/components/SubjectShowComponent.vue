@@ -1,6 +1,6 @@
 <template>
   <div class="col">
-    <div>{{ subjectName }}</div>
+    <div>{{ subject.name }}</div>
   </div>
 </template>
 
@@ -12,19 +12,20 @@ export default {
   props: {
     examId: String,
     subjectId: String,
-    subjectName: String
   },
   
-  beforeRouteUpdate (to, from, next) {
-    this.id = to.params.subjectId;
-    next();
-
-  },
-
   data: function() {
     return {
-      targetId: this.subjectId
+      id: this.subjectId,
+      subject: {}
     }
+  },
+
+  watch:{
+    id: function(){
+      this.getSubject();
+    }
+
   },
 
   methods:{
