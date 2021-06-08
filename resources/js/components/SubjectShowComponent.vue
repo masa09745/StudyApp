@@ -1,13 +1,18 @@
 <template>
   <div class="col">
     <div>{{ subject.name }}</div>
+    <question-index-component/>
   </div>
 </template>
 
 <script>
-
+import QuestionIndexComponent from './QuestionIndexComponent.vue';
 
 export default {
+
+  components: {
+    QuestionIndexComponent
+  },
 
   props: {
     examId: String,

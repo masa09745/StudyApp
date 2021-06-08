@@ -7,7 +7,7 @@
             <div style="margin-right: 10px">試験日</div>
             <div>{{exam.date}}</div>
           </div>
-          <subjetc-list-component :exam='exam' />
+          <subject-list-component :exam='exam' />
         </div>
       </div>
       <router-view/>
@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import SubjetcListComponent from './SubjetcListComponent.vue';
+import SubjectListComponent from './SubjectListComponent.vue';
 
 export default {
 
-  components: { SubjetcListComponent },
+  components: { SubjectListComponent },
 
   props: {
     examId: String
