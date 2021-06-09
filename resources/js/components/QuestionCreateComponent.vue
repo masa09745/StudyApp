@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    test
+    問題作成
   </div>
 </template>
 
 <script>
 export default {
-  
+  props: {
+    subjectId: String
+  }
 }
 </script>
