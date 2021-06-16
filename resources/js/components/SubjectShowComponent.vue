@@ -1,7 +1,7 @@
 <template>
   <div class="col">
     <h2>{{ subject.name }}</h2>
-    <router-link v-bind:to="{name: 'question.create', params: {subjectId: id }}">問題作成</router-link>
+    <router-link v-bind:to="{name: 'question.create', params: {subjectId: id }}">過去問アップロード</router-link>
     <question-index-component/>
   </div>
 </template>

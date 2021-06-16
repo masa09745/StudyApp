@@ -2,13 +2,15 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-sm-6">
-        <h4 class="title border-bottom">問題文登録</h4>
+        <h4 class="title border-bottom">過去問アップロード</h4>
         <form action="">
-          <div class="form-group" v-for="n in 25" :key="n" >
-            <label for="QuestionId" class="col-form-label">{{"問題 " + n}}</label>
-            <input type="text" class="form-control" id="QuestionText">
+          <div class="form-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="uploadfile">
+              <label class="custom-file-label" for="uploadfile">過去問を選んでください</label>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">作成</button>
+          <button type="submit" class="btn btn-primary">アップロード</button>
         </form>
       </div>
     </div>
