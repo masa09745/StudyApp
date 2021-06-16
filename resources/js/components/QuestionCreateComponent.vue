@@ -3,7 +3,6 @@
     <div class="row justify-content-center">
       <div class="col-sm-6">
         <h4 class="title border-bottom">過去問アップロード</h4>
-        <form action="">
           <div class="form-group">
             <div class="custom-file">
               <input type="file" class="custom-file-input" id="uploadfile" @change="selectFile">
@@ -11,8 +10,7 @@
               <span id="file_name" v-show="fileData.name">{{ fileData.name }}</span>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">アップロード</button>
-        </form>
+          <button @click="uploadFile" class="btn btn-primary">アップロード</button>
       </div>
     </div>
 
@@ -34,6 +32,13 @@ export default {
   methods:{
     selectFile(event) {
       this.fileData = event.target.files[0];
+    },
+    uploadFile() {
+      const formdata = new FormData()
+      formdata.append ('file', this.fileData)
+
+      axios.post('/api/questions', formdata)
+        .then((res)=> console.log(res))
     }
   }
 
