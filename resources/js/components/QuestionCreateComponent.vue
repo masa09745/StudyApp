@@ -6,7 +6,7 @@
         <form action="">
           <div class="form-group">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="uploadfile" v-on:change="selectFile">
+              <input type="file" class="custom-file-input" id="uploadfile" @change="selectFile">
               <label class="custom-file-label" for="uploadfile">過去問を選んでください</label>
               <span id="file_name" v-show="fileData.name">{{ fileData.name }}</span>
             </div>
@@ -34,7 +34,7 @@ export default {
   methods:{
     selectFile(event) {
       this.fileData = event.target.files[0];
-    },
+    }
   }
 
 }
