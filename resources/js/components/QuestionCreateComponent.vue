@@ -6,8 +6,9 @@
         <form action="">
           <div class="form-group">
             <div class="custom-file">
-              <input type="file" class="custom-file-input" id="uploadfile">
+              <input type="file" class="custom-file-input" id="uploadfile" v-on:change="selectFile">
               <label class="custom-file-label" for="uploadfile">過去問を選んでください</label>
+              <span id="file_name" v-show="fileData.name">{{ fileData.name }}</span>
             </div>
           </div>
           <button type="submit" class="btn btn-primary">アップロード</button>
@@ -22,6 +23,19 @@
 export default {
   props: {
     subjectId: String
+  },
+
+  data:function(){
+    return {
+      fileData: ''
+    }
+  },
+
+  methods:{
+    selectFile(event) {
+      this.fileData = event.target.files[0];
+    },
   }
+
 }
 </script>
