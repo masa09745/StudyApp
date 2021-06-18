@@ -10,6 +10,8 @@ class QuestionController extends Controller
     {
         $file_name = $request->file->getClientOriginalName();
         $request->file->storeAs('public/', $file_name);
+
+        
     }
 }
 

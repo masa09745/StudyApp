@@ -35,7 +35,7 @@ class ExamController extends Controller
             $subjects[] = new Subject($subject);
         }
 
-        $exam = Exam::create($request->all())->subjects()->saveMany($subjects);
+        return Exam::create($request->all())->subjects()->saveMany($subjects);
 
     }
 
