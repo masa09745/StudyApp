@@ -9,10 +9,6 @@ use App\Models\Exam;
 
 class ExamController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('JpJsonResponse');
-    }
 
     public function index()
     {
@@ -21,7 +17,13 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        return Exam::create($request->all());
+        $file_name = $request->file->getClientOriginalName();
+        $request->file->storeAs('public/', $file_name);
+
+        $exam = new Exam();
+        $exam->date = $request->date;
+        $exam->file_path = 'storage/' . $file_name;
+        $exam->save();
 
     }
 
