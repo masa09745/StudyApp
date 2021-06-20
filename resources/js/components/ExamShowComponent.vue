@@ -16,11 +16,9 @@
 </template>
 
 <script>
-import SubjectListComponent from './SubjectListComponent.vue';
+
 
 export default {
-
-  components: { SubjectListComponent },
 
   props: {
     examId: String
