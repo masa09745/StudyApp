@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Exam;
-use App\Models\Subject;
+
 
 class ExamController extends Controller
 {
@@ -16,18 +16,18 @@ class ExamController extends Controller
 
     public function index()
     {
-        return Exam::with('subjects')->get();
+        return Exam::all();
     }
 
     public function store(Request $request)
     {
-
+        return Exam::create($request->all());
 
     }
 
     public function show($id)
     {
-        $exam = Exam::with('subjects')->find($id);
+        $exam = Exam::find($id);
         return $exam;
     }
 
