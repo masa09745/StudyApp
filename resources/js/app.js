@@ -39,22 +39,6 @@ const router = new VueRouter({
             name: 'exam.show',
             component: ExamShowComponent,
             props: true,
-            children: [
-              {
-                path: 'subjects/:subjectId',
-                name: 'subject.show',
-                component: SubjectShowComponent,
-                props: true
-              }
-
-            ]
-        },
-
-        {
-            path: '/subjects/:subjectId/questions/create',
-            name: 'question.create',
-            component: QuestionCreateComponent,
-            props: true
         },
 
         {

@@ -21,21 +21,7 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        $data = [
-            'subjects' => [
-                ['name' => '法規'],
-                ['name' => '機体'],
-                ['name' => '発動機'],
-                ['name' => '電気・電子装備品'],
-            ]
-        ];
-        $subjects =[];
 
-        foreach($data['subjects']as $subject){
-            $subjects[] = new Subject($subject);
-        }
-
-        return Exam::create($request->all())->subjects()->saveMany($subjects);
 
     }
 
