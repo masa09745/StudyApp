@@ -25,6 +25,8 @@ class ExamController extends Controller
         $exam->file_path = 'storage/' . $file_name;
         $exam->save();
 
+        return $exam;
+
     }
 
     public function show($id)

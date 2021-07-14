@@ -3,13 +3,17 @@
     <div class="row justify-content-center">
       <div class="col-sm-6">
         <h4 class="title border-bottom">過去問作成</h4>
-        <form v-on:submit.prevent="submit">
           <div class="form-group">
             <label for="ExamDate" class="col-form-label">試験日</label>
-            <input type="text" class= "form-control" id="ExamDate" v-model="exam.date">
+            <input type="text" class= "form-control" id="ExamDate" v-model="date">
           </div>
-          <button type="submit" class="btn btn-primary">作成</button>
-        </form>
+          <div class="form-group">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" @change="confirmFile" v-if="view">
+              <label class="custom-file-label" for="uploadfile">過去問を選んでください</label>
+            </div>
+          </div>
+          <button @click="uploadExam" class="btn btn-primary">作成</button>
       </div>
     </div>
   </div>
@@ -20,13 +24,32 @@ export default {
 
   data: function() {
     return {
-      exam: {}
+      date: "",
+      file: "",
+      view: true,
+      confirmedImage: ""
+
     }
   },
   methods: {
-    submit() {
-      axios.post('/api/exams', this.exam)
-        .then((res) => {
+    confirmFile(e){
+      this.file = e.target.files[0];
+      this.createFile(this.file);
+    },
+    createFile(file) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = e => {
+        this.confirmedImage = e.target.result;
+      };
+    },
+    uploadExam() {
+      let data = new FormData();
+      data.append("date", this.date);
+      data.append("file", this.file);
+
+      axios.post('/api/exams', data)
+        .then(res => {
           this.$router.push({name: 'exam.list'});
         });
     }
