@@ -5,43 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Exam;
-use App\Models\Subject;
+
 
 class ExamController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('JpJsonResponse');
-    }
 
     public function index()
     {
-        return Exam::with('subjects')->get();
+        return Exam::all();
     }
 
     public function store(Request $request)
     {
-        $data = [
-            'subjects' => [
-                ['name' => '法規'],
-                ['name' => '機体'],
-                ['name' => '発動機'],
-                ['name' => '電気・電子装備品'],
-            ]
-        ];
-        $subjects =[];
+        $file_name = $request->file->getClientOriginalName();
+        $request->file->storeAs('public/', $file_name);
 
-        foreach($data['subjects']as $subject){
-            $subjects[] = new Subject($subject);
-        }
+        $exam = new Exam();
+        $exam->date = $request->date;
+        $exam->file_path = 'storage/' . $file_name;
+        $exam->save();
 
-        $exam = Exam::create($request->all())->subjects()->saveMany($subjects);
+        return $exam;
 
     }
 
     public function show($id)
     {
-        $exam = Exam::with('subjects')->find($id);
+        $exam = Exam::find($id);
         return $exam;
     }
 

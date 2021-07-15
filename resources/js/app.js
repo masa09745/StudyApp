@@ -12,7 +12,6 @@ import ExamListComponent from "./components/ExamListComponent";
 import ExamCreateComponent from "./components/ExamCreateComponent";
 import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
-import SubjectShowComponent from "./components/SubjectShowComponent";
 
 window.Vue = require('vue').default;
 
@@ -26,26 +25,20 @@ const router = new VueRouter({
             name: 'exam.list',
             component: ExamListComponent
         },
+
         {
             path: '/exams/create',
             name: 'exam.create',
             component: ExamCreateComponent
         },
+
         {
             path: '/exams/:examId',
             name: 'exam.show',
             component: ExamShowComponent,
             props: true,
-            children: [
-              {
-                path: 'subjects/:subjectId',
-                name: 'subject.show',
-                component: SubjectShowComponent,
-                props: true
-              }
-
-            ]
         },
+
         {
             path: '/exams/:examId/edit',
             name: 'exam.edit',

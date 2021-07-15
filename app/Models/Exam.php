@@ -9,12 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Exam extends Model
 {
     protected $fillable = [
-        'date'
+        'date',
+        'file_path'
     ];
-    
-    public function Subjects()
-    {
-        return $this->hasMany(Subject::class);
-    }
+
     use HasFactory;
 }
