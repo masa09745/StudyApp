@@ -13,6 +13,7 @@
               <label class="custom-file-label" for="uploadfile">過去問を選んでください</label>
             </div>
           </div>
+          <p v-if="confirmedFile">{{file.name}}</p>
           <button @click="uploadExam" class="btn btn-primary">作成</button>
       </div>
     </div>
@@ -27,7 +28,7 @@ export default {
       date: "",
       file: "",
       view: true,
-      confirmedImage: ""
+      confirmedFile: ""
 
     }
   },
@@ -40,7 +41,7 @@ export default {
       const reader = new FileReader();
       reader.readAsDataURL(file);
       reader.onload = e => {
-        this.confirmedImage = e.target.result;
+        this.confirmedFile = e.target.result;
       };
     },
     uploadExam() {
