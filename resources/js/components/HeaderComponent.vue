@@ -2,11 +2,10 @@
   <div class="container-fluid bg-dark mb-5">
     <div class="container-sm">
       <nav class="navbar navbar-dark">
-        <span class="navbar-brand mb-0 h1">Study App</span>
+        <router-link v-bind:to="{name: 'exam.list'}">
+          <span class="navbar-brand mb-0 h1">Study App</span>
+        </router-link>
         <div>
-          <router-link v-bind:to="{name: 'exam.list'}">
-            <button class="btn btn-success">List</button>
-          </router-link>
           <router-link v-bind:to="{name: 'exam.create'}">
             <button class="btn btn-success">Add</button>
           </router-link>

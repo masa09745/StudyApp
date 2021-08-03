@@ -6,11 +6,11 @@
           <div class="d-flex justify-content-center border-bottom">
             <div style="margin-right: 10px">試験日</div>
             <div>{{exam.date}}</div>
+            <div>{{exam.file_path}}</div>
           </div>
-          <subject-list-component :exam='exam' />
         </div>
+        <iframe :src="exam.file_path" frameborder="0" width="700px"></iframe>
       </div>
-      <router-view/>
     </div>
   </div>
 </template>
