@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Exam;
-
+use App\Models\Subject;
 
 class ExamController extends Controller
 {
@@ -17,8 +17,21 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        return Exam::create($request->all());
+        $data = [
+            'subjects' => [
+                ['name' => '法規'],
+                ['name' => '機体'],
+                ['name' => '発動機'],
+                ['name' => '電気・電子装備品']
+            ]
+        ];
+        $subjects = [];
 
+        foreach($data['subjects'] as $subject){
+            $subjects[] = new Subject($subject);
+        }
+
+        Exam::create($request->all())->subjects()->saveMany($subjects);
     }
 
     public function show($id)

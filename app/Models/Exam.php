@@ -14,8 +14,8 @@ class Exam extends Model
 
     public function Subjects()
     {
-        return $this->hasMany(Subjects::class);
+        return $this->hasMany(Subject::class);
     }
-    
+
     use HasFactory;
 }
