@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Exam extends Model
 {
     protected $fillable = [
-        'date',
-        'file_path'
+        'date'
     ];
 
     use HasFactory;
