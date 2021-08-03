@@ -17,15 +17,7 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        $file_name = $request->file->getClientOriginalName();
-        $request->file->storeAs('public/', $file_name);
-
-        $exam = new Exam();
-        $exam->date = $request->date;
-        $exam->file_path = 'storage/' . $file_name;
-        $exam->save();
-
-        return $exam;
+        return Exam::create($request->all());
 
     }
 
