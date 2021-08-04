@@ -36,7 +36,7 @@ class ExamController extends Controller
 
     public function show($id)
     {
-        $exam = Exam::find($id);
+        $exam = Exam::with('subjects')->find($id);
         return $exam;
     }
 
