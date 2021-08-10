@@ -19,10 +19,10 @@ class ExamController extends Controller
     {
         $data = [
             'subjects' => [
-                ['name' => '法規'],
-                ['name' => '機体'],
-                ['name' => '発動機'],
-                ['name' => '電気・電子装備品']
+                ['name' => '法規', 'route' => 'row'],
+                ['name' => '機体', 'route' => 'airplane'],
+                ['name' => '発動機', 'route' => 'engine'],
+                ['name' => '電気・電子装備品', 'route' => 'electronics']
             ]
         ];
         $subjects = [];

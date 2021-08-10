@@ -12,6 +12,7 @@ import ExamListComponent from "./components/ExamListComponent";
 import ExamCreateComponent from "./components/ExamCreateComponent";
 import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
+import SubjectShowComponent from "./components/SubjectShowComponent";
 
 window.Vue = require('vue').default;
 
@@ -37,6 +38,14 @@ const router = new VueRouter({
             name: 'exam.show',
             component: ExamShowComponent,
             props: true,
+            children: [
+                {
+                    path: ':subjectName',
+                    name: 'subject.show',
+                    component: SubjectShowComponent,
+                    props: true,
+                }
+            ]
         },
 
         {

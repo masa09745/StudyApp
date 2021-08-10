@@ -10,12 +10,13 @@
         </div>
           <ul class="nav justify-content-center">
             <li class="nav-item" v-for="(subject, index) in exam.subjects" :key="index">
-              <router-link class="nav-link text-dark" v-bind:to="{name: subject.show, params: {subjectId: subject.id.toString()}}">
+              <router-link class="nav-link text-dark" v-bind:to="{name: 'subject.show', params: {subjectName: subject.route}}">
                 {{ subject.name}}
               </router-link>
             </li>
           </ul>
       </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
