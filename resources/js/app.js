@@ -8,8 +8,8 @@ require('./bootstrap');
 import Vue from "vue";
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
-import ExamListComponent from "./components/ExamListComponent";
-import ExamCreateComponent from "./components/ExamCreateComponent";
+import SubjectIndexComponent from "./components/SubjectIndexComponent";
+import QuestionCreateComponent from "./components/QuestionCreateComponent";
 import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
@@ -22,15 +22,15 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/exams',
-            name: 'exam.list',
-            component: ExamListComponent
+            path: '/top',
+            name: 'subject.index',
+            component: SubjectIndexComponent
         },
 
         {
-            path: '/exams/create',
-            name: 'exam.create',
-            component: ExamCreateComponent
+            path: '/questions/create',
+            name: 'question.create',
+            component: QuestionCreateComponent
         },
 
         {
@@ -38,14 +38,6 @@ const router = new VueRouter({
             name: 'exam.show',
             component: ExamShowComponent,
             props: true,
-            children: [
-                {
-                    path: ':subjectName',
-                    name: 'subject.show',
-                    component: SubjectShowComponent,
-                    props: true,
-                }
-            ]
         },
 
         {
