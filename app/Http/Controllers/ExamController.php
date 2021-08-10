@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Exam;
-
+use App\Models\Subject;
 
 class ExamController extends Controller
 {
@@ -17,21 +17,26 @@ class ExamController extends Controller
 
     public function store(Request $request)
     {
-        $file_name = $request->file->getClientOriginalName();
-        $request->file->storeAs('public/', $file_name);
+        $data = [
+            'subjects' => [
+                ['name' => '法規', 'route' => 'row'],
+                ['name' => '機体', 'route' => 'airplane'],
+                ['name' => '発動機', 'route' => 'engine'],
+                ['name' => '電気・電子装備品', 'route' => 'electronics']
+            ]
+        ];
+        $subjects = [];
 
-        $exam = new Exam();
-        $exam->date = $request->date;
-        $exam->file_path = 'storage/' . $file_name;
-        $exam->save();
+        foreach($data['subjects'] as $subject){
+            $subjects[] = new Subject($subject);
+        }
 
-        return $exam;
-
+        Exam::create($request->all())->subjects()->saveMany($subjects);
     }
 
     public function show($id)
     {
-        $exam = Exam::find($id);
+        $exam = Exam::with('subjects')->find($id);
         return $exam;
     }
 

@@ -12,6 +12,7 @@ import ExamListComponent from "./components/ExamListComponent";
 import ExamCreateComponent from "./components/ExamCreateComponent";
 import ExamShowComponent from "./components/ExamShowComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
+import SubjectShowComponent from "./components/SubjectShowComponent";
 
 window.Vue = require('vue').default;
 
@@ -37,6 +38,14 @@ const router = new VueRouter({
             name: 'exam.show',
             component: ExamShowComponent,
             props: true,
+            children: [
+                {
+                    path: ':subjectName',
+                    name: 'subject.show',
+                    component: SubjectShowComponent,
+                    props: true,
+                }
+            ]
         },
 
         {
@@ -59,7 +68,6 @@ const router = new VueRouter({
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('header-component', HeaderComponent);
 
 /**

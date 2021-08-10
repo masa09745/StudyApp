@@ -7,10 +7,16 @@
             <div style="margin-right: 10px">試験日</div>
             <div>{{exam.date}}</div>
           </div>
-          <subject-list-component :exam='exam' />
         </div>
+          <ul class="nav justify-content-center">
+            <li class="nav-item" v-for="(subject, index) in exam.subjects" :key="index">
+              <router-link class="nav-link text-dark" v-bind:to="{name: 'subject.show', params: {subjectName: subject.route}}">
+                {{ subject.name}}
+              </router-link>
+            </li>
+          </ul>
       </div>
-      <router-view/>
+      <router-view></router-view>
     </div>
   </div>
 </template>

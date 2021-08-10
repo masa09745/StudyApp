@@ -4,7 +4,7 @@
       <thead class="thead-dark">
       <tr>
         <th scope="col">Date</th>
-        <th scope="col">Edit</th>
+        <th scope="col">Show</th>
         <th scope="col">Delete</th>
       </tr>
       </thead>
