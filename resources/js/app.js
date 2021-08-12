@@ -9,10 +9,9 @@ import Vue from "vue";
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import SubjectIndexComponent from "./components/SubjectIndexComponent";
-import QuestionCreateComponent from "./components/QuestionCreateComponent";
-import ExamShowComponent from "./components/ExamShowComponent";
-import ExamEditComponent from "./components/ExamEditComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
+import QuestionCreateComponent from "./components/QuestionCreateComponent";
+import ExamEditComponent from "./components/ExamEditComponent";
 
 window.Vue = require('vue').default;
 
@@ -26,18 +25,18 @@ const router = new VueRouter({
             name: 'subject.index',
             component: SubjectIndexComponent
         },
+        
+        {
+            path: '/subjects/:subjectId',
+            name: 'subject.show',
+            component: SubjectShowComponent,
+            props: true,
+        },
 
         {
             path: '/questions/create',
             name: 'question.create',
             component: QuestionCreateComponent
-        },
-
-        {
-            path: '/exams/:examId',
-            name: 'exam.show',
-            component: ExamShowComponent,
-            props: true,
         },
 
         {
