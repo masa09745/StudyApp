@@ -1,32 +1,24 @@
 <template>
-  <div class="container">
-    <div>科目を選んでください</div>
+  <div class="container-fluid">
+    <div class="subjectMenu">
+      <h2 style="text-align: center">科目を選んでください</h2>
+      <button class="btn btn-primary btn-lg btn-block">法規</button>
+      <button class="btn btn-primary btn-lg btn-block">機体</button>
+      <button class="btn btn-primary btn-lg btn-block">発動機</button>
+      <button class="btn btn-primary btn-lg btn-block">電気・電子装備品</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data: function() {
-    return {
-      exams: []
-    }
-  },
-  methods: {
-    getExams(){
-      axios.get('/api/exams')
-        .then((res) => {
-          this.exams = res.data;
-        });
-    },
-    deleteExam(id) {
-      axios.delete('/api/exams/' +id)
-        .then((res) => {
-          this.getExams();
-        });
-    }
-  },
-  mounted() {
-    this.getExams();
-  }
+  
 }
 </script>
+
+<style>
+.subjectMenu{
+  max-width: 650px;
+  margin: 0 auto;
+}
+</style>

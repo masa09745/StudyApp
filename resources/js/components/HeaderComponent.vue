@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-dark mb-5">
+  <div class="container-fluid bg-dark mb-4">
     <div class="container-sm">
       <nav class="navbar navbar-dark">
         <router-link v-bind:to="{name: 'subject.index'}">
