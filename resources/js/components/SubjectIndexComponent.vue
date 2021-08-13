@@ -3,7 +3,9 @@
     <div class="subjectMenu">
       <h2 style="text-align: center">科目を選んでください</h2>
       <div class="subjectMenu-list" v-for="(subject, index) in subjects" :key="index">
-        <button class="btn btn-primary btn-lg btn-block">{{subject.name}}</button>
+        <router-link v-bind:to="{name: 'subject.show', params: {subjectId: subject.id.toString()}}">
+          <button class="btn btn-primary btn-lg btn-block">{{subject.name}}</button>
+        </router-link>
       </div>
     </div>
   </div>
