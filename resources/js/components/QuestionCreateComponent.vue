@@ -7,22 +7,10 @@
           <div class="form-group">
 
             <label for="QuestionSubject" class="col-form-label">科目</label>
-            <div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="row" name="subjects" value="row" >
-                <label class="form-check-label" for="row">法規</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="airplane" name="subjects" value="airplane">
-                <label class="form-check-label" for="airplane">機体</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="engine" name="subjects" value="engine">
-                <label class="form-check-label" for="engine">発動機</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="electronics" name="subjects" value="electronics">
-                <label class="form-check-label" for="electronics">電気・電子装備品</label>
+            <div >
+              <div v-for="(subject, index) in subjects" :key="index" class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" id="row" name="subjects" value="subject" >
+                <label class="form-check-label" for="subject">{{subject.name}}</label>
               </div>
             </div>
             <label for="QuestionText" class="col-form-label">問題文</label>
@@ -49,6 +37,24 @@
 
 <script>
 export default {
+  data: function(){
+    return{
+      subjects: []
+    }
+  },
+
+  methods: {
+    getSubjects() {
+      axios.get('/api/subjects')
+        .then((res) => {
+          this.subjects = res.data;
+        });
+    }
+  },
+
+  mounted (){
+    this.getSubjects();
+  }
 
 }
 </script>
