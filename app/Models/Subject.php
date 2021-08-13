@@ -9,13 +9,7 @@ class Subject extends Model
 {
     protected $fillable = [
         'name',
-        'route'
     ];
-
-    public function Exam()
-    {
-        return $this->belongsTo(Exam::class);
-    }
 
     public function Questions()
     {
