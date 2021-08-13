@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['Middleware' => ['api']], function(){
   Route::resource('subjects', 'SubjectController');
+  Route::resource('Questions', 'QuestionController');
 
 });
 
