@@ -9,32 +9,32 @@
             <label for="QuestionSubject" class="col-form-label">科目</label>
             <div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="row" >
+                <input class="form-check-input" type="radio" id="row" name="subjects" value="row" >
                 <label class="form-check-label" for="row">法規</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="airplane" >
-                <label class="form-check-label" for="row">機体</label>
+                <input class="form-check-input" type="radio" id="airplane" name="subjects" value="airplane">
+                <label class="form-check-label" for="airplane">機体</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="engine" >
-                <label class="form-check-label" for="row">発動機</label>
+                <input class="form-check-input" type="radio" id="engine" name="subjects" value="engine">
+                <label class="form-check-label" for="engine">発動機</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" id="electronics" >
+                <input class="form-check-input" type="radio" id="electronics" name="subjects" value="electronics">
                 <label class="form-check-label" for="electronics">電気・電子装備品</label>
               </div>
             </div>
             <label for="QuestionText" class="col-form-label">問題文</label>
             <input type="text" class= "form-control" id="QuestionText">
-            <label for="QuestionCorrect" class="col-form-label">正解</label>
-            <input type="text" class= "form-control" id="QuestionCorrect">
-            <label for="QuestionIncorrect1" class="col-form-label">不正解1</label>
-            <input type="text" class= "form-control" id="QuestionIncorrect1">
-            <label for="QuestionInorrect2" class="col-form-label">不正解2</label>
-            <input type="text" class= "form-control" id="QuestionIncorrect2">
-            <label for="QuestionIncorrect3" class="col-form-label">不正解3</label>
-            <input type="text" class= "form-control" id="QuestionIncorrect3">
+            <label for="QuestionChoice1" class="col-form-label">選択肢1</label>
+            <input type="text" class= "form-control" id="QuestionChoice1">
+            <label for="QuestionChoice2" class="col-form-label">選択肢2</label>
+            <input type="text" class= "form-control" id="QuestionChoice2">
+            <label for="QuestionChoice3" class="col-form-label">選択肢3</label>
+            <input type="text" class= "form-control" id="QuestionChoice3">
+            <label for="QuestionChoice4" class="col-form-label">選択肢4</label>
+            <input type="text" class= "form-control" id="QuestionChoice4">
             <label for="QuestionExplanation" class="col-form-label">解説</label>
             <textarea class= "form-control" id="QuestionExplanation"/>
           </div>
