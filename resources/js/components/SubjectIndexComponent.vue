@@ -7,6 +7,9 @@
           <button class="btn btn-primary btn-lg btn-block">{{subject.name}}</button>
         </router-link>
       </div>
+        <router-link v-bind:to="{name: 'question.index'}">
+          <button class="btn btn-primary btn-lg btn-block">全て</button>
+        </router-link>
     </div>
   </div>
 </template>

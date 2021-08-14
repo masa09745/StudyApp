@@ -10,6 +10,7 @@ import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
 import SubjectIndexComponent from "./components/SubjectIndexComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
+import QuestionIndexComponent from "./components/QuestionIndexComponent";
 import QuestionCreateComponent from "./components/QuestionCreateComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
 
@@ -31,6 +32,12 @@ const router = new VueRouter({
             name: 'subject.show',
             component: SubjectShowComponent,
             props: true,
+        },
+
+        {
+            path: '/questions',
+            name: 'question.index',
+            component: QuestionIndexComponent
         },
 
         {

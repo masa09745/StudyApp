@@ -15,6 +15,7 @@ class SubjectController extends Controller
     public function show($id)
 
     {
-        
+        $question = Subject::with('questions')->find($id);
+        return $question;
     }
 }
