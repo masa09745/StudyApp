@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="subjectQuestion">
-      <h2>問題 {{questions.id}}</h2>
+      <h2>問題 {{questionNum}}. {{subject[questionNum-1].text}}</h2>
 
 
     </div>
@@ -17,19 +17,22 @@ export default {
 
   data: function() {
     return{
-      questions: []
+      questionNum: 1,
+      totalQuestion: 0,
+      subject: []
     }
   },
 
   methods: {
     gesQuestions() {
-      axios.get('/api/subjects/' + this.subjectId)
+      axios.get('/api/questions?id=' + this.subjectId)
         .then ((res) => {
-          this.questions = res.data;
+          this.subject = res.data;
+          this.totalQuestion = this.subject.length;
         });
     }
   },
-  created() {
+  mounted() {
     this.gesQuestions();
   }
 }
