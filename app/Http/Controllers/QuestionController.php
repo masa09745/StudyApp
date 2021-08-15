@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
-    public function index(Request $request) {
-        $subjectId = $request->id;
+
+    public function GetQuestionsBySubject($subjectId)
+    {
         $questions = DB::table('questions')
         ->where([
             ['subject_id', '=', $subjectId]
@@ -17,6 +18,12 @@ class QuestionController extends Controller
         ->get();
 
         return $questions;
+    }
+
+    public function index()
+    {
+        return Question::all();
+
     }
 
     public function store(Request $request)

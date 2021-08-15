@@ -25,7 +25,7 @@ export default {
 
   methods: {
     gesQuestions() {
-      axios.get('/api/questions?id=' + this.subjectId)
+      axios.get('/api/subjects/' + this.subjectId + '/questions')
         .then ((res) => {
           this.subject = res.data;
           this.totalQuestion = this.subject.length;
