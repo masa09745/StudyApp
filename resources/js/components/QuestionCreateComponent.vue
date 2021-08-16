@@ -22,6 +22,8 @@
             <input type="text" class= "form-control" id="QuestionChoice3" v-model="question.choice3">
             <label for="QuestionChoice4" class="col-form-label">選択肢4</label>
             <input type="text" class= "form-control" id="QuestionChoice4" v-model="question.choice4">
+            <label for="QuestionAnswer" class="col-form-label">解答</label>
+            <input type="text" class= "form-control" id="QuestionAnswer" v-model="question.answer">
             <label for="QuestionExplanation" class="col-form-label">解説</label>
             <textarea class= "form-control" id="QuestionExplanation" v-model="question.explanation"/>
           </div>
