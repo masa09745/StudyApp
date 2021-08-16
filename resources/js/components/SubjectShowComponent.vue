@@ -6,7 +6,7 @@
         <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice}}</li>
       </ul>
       <div class="subjectQuestion_answer">
-      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary">({{index+1}}) {{answer}}</button>
+      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
 
 
@@ -67,6 +67,16 @@ export default {
         this.answers.push(i);
       };
     },
+
+    showResult: function(answer) {
+      let correct = this.questions[this.questionNum-1].answer;
+      if(answer == correct) {
+        console.log("正解です")
+      } else{
+        console.log("不正解です")
+      }
+
+    }
 
   }
 }
