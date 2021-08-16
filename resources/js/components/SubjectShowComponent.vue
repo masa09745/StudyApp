@@ -1,7 +1,13 @@
 <template>
   <div class="container-fluid">
     <div class="subjectQuestion" v-if="question">
-      <h2>問題 {{questionNum}}. {{subject[questionNum-1].text}}</h2>
+      <h1 class="subjectQuestion_text">問題 {{questionNum}}. {{questions[questionNum-1].text}}</h1>
+      <ul class="subjectQuestion_choice">
+        <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice}}</li>
+      </ul>
+      <div class="subjectQuestion_answer">
+      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary">({{index+1}}) {{answer}}</button>
+      </div>
 
 
     </div>
@@ -19,8 +25,11 @@ export default {
     return{
       questionNum: 1,
       totalQuestion: 0,
-      subject: [],
-      question: null
+      questions: [],
+      question: null,
+      choices: [],
+      totalChoices: "",
+      answers: []
     }
   },
   created() {
@@ -32,11 +41,33 @@ export default {
     gesQuestions() {
       axios.get('/api/subjects/' + this.subjectId + '/questions')
         .then ((res) => {
-          this.subject = res.data;
-          this.totalQuestion = this.subject.length;
+          this.questions = res.data;
+          this.totalQuestion = this.questions.length;
           this.question = true;
+          this.getChoice(this.questionNum-1);
+          this.getAnwer();
         });
-    }
+    },
+
+    getChoice: function(index) {
+      this.choices = [];
+      this.choices.push(
+        this.questions[index].choice1,
+        this.questions[index].choice2,
+        this.questions[index].choice3,
+        this.questions[index].choice4
+      );
+      this.totalChoices = this.choices.length;
+    },
+
+    getAnwer: function() {
+      this.answers = [];
+      let i=1;
+      for(i=1; i<=this.totalChoices; i++){
+        this.answers.push(i);
+      };
+    },
+
   }
 }
 </script>
@@ -45,5 +76,22 @@ export default {
 .subjectQuestion{
   width: 600px;
   margin: 0 auto;
+}
+
+.subjectQuestion_text{
+  border-bottom:  solid #333333;
+}
+
+.subjectQuestion_choice{
+  list-style: none;
+  font-size: 30px;
+  margin-top: 1rem;
+}
+
+.subjectQuestion_answer{
+  width: 550px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
 }
 </style>
