@@ -20,6 +20,7 @@ class CreateQuestionsTable extends Migration
             $table->string('choice2');
             $table->string('choice3');
             $table->string('choice4');
+            $table->integer('answer');
             $table->string('explanation');
             $table->foreignId('subject_id');
             $table->timestamps();

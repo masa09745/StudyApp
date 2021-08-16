@@ -13,6 +13,7 @@ class Question extends Model
         'choice2',
         'choice3',
         'choice4',
+        'answer',
         'explanation',
         'subject_id'
     ];
