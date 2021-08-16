@@ -26,7 +26,7 @@ const router = new VueRouter({
             name: 'subject.index',
             component: SubjectIndexComponent
         },
-        
+
         {
             path: '/subjects/:subjectId',
             name: 'subject.show',

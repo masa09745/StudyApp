@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div class="subjectQuestion">
+    <div class="subjectQuestion" v-if="question">
       <h2>問題 {{questionNum}}. {{subject[questionNum-1].text}}</h2>
 
 
@@ -19,8 +19,13 @@ export default {
     return{
       questionNum: 1,
       totalQuestion: 0,
-      subject: []
+      subject: [],
+      question: null
     }
+  },
+  created() {
+    this.gesQuestions();
+    console.log(this);
   },
 
   methods: {
@@ -29,11 +34,9 @@ export default {
         .then ((res) => {
           this.subject = res.data;
           this.totalQuestion = this.subject.length;
+          this.question = true;
         });
     }
-  },
-  mounted() {
-    this.gesQuestions();
   }
 }
 </script>
