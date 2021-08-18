@@ -20,7 +20,8 @@
               </button>
             </div>
             <div class="modal-body">
-              ...
+              <h6>解説</h6>
+              <div>{{questions[questionNum-1].explanation}}</div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
