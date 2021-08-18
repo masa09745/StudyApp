@@ -6,7 +6,28 @@
         <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice}}</li>
       </ul>
       <div class="subjectQuestion_answer">
-      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
+      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
+      </div>
+
+      <!-- modal -->
+      <div class="modal fade" id="result" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{result}}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
       </div>
 
 
@@ -29,7 +50,8 @@ export default {
       question: null,
       choices: [],
       totalChoices: "",
-      answers: []
+      answers: [],
+      result: ""
     }
   },
   created() {
@@ -71,9 +93,10 @@ export default {
     showResult: function(answer) {
       let correct = this.questions[this.questionNum-1].answer;
       if(answer == correct) {
-        console.log("正解です")
+        this.result = "正解！！";
       } else{
-        console.log("不正解です")
+        this.result = "不正解！！";
+        
       }
 
     }
