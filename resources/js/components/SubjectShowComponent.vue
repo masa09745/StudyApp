@@ -9,7 +9,6 @@
       <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
 
-      <!-- modal -->
       <div class="modal fade" id="result" tabindex="-1" aria-labelledby="questionResultLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
@@ -24,40 +23,45 @@
               <div>{{questions[questionNum-1].explanation}}</div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">次の問題へ</button>
-              <button type="button" class="btn btn-dark">終了する</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="nextQuestion()">次の問題へ</button>
+              <button type="button" class="btn btn-dark"  data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="endQuestion()">終了する</button>
             </div>
           </div>
         </div>
       </div>
-
-
+      <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
     </div>
-
   </div>
 </template>
 
 <script>
+import FinalResultComponent from './FinalResultComponent.vue';
 export default {
+
+  components: {
+    FinalResultComponent
+  },
+
   props: {
     subjectId: String
   },
 
   data: function() {
+
     return{
       questionNum: 1,
       totalQuestion: 0,
       questions: [],
-      question: null,
+      question: false,
       choices: [],
       totalChoices: "",
       answers: [],
-      result: ""
+      result: "",
+      correctCount: 0
     }
   },
   created() {
     this.gesQuestions();
-    console.log(this);
   },
 
   methods: {
@@ -95,11 +99,23 @@ export default {
       let correct = this.questions[this.questionNum-1].answer;
       if(answer == correct) {
         this.result = "正解！！";
+        this.correctCount++;
       } else{
         this.result = "不正解！！";
-        
       }
+    },
 
+    nextQuestion: function() {
+      if(this.questionNum < this.totalQuestion) {
+        this.questionNum++;
+        this.getChoice(this.questionNum+1);
+      } else {
+        this.$refs.finalResult.showFinalResult();
+      }
+    },
+
+    endQuestion: function() {
+      this.$refs.finalResult.showFinalResult();
     }
 
   }
