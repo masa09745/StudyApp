@@ -8,7 +8,7 @@
       <div class="subjectQuestion_answer">
       <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
-      <show-result-component ref="result" :questions="questions" :questionNum="questionNum" @next="nextQuestion()" @end="endQuestion()"/>
+      <show-result-component ref="result" :questions="questions" :questionNum="questionNum" v-model="correctCount" @next="nextQuestion()" @end="endQuestion()"/>
       <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
     </div>
   </div>

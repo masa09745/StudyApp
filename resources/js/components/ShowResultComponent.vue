@@ -1,5 +1,6 @@
 <template>
   <div v-show="judgement">
+    <input type="hidden" v-model="count"/>
     <div class="modal fade" id="result" tabindex="-1" aria-labelledby="questionResultLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -26,17 +27,32 @@
 
 <script>
 export default {
-  props: ['questions', 'questionNum'],
+  props:　{
+    questions: Array,
+    questionNum: Number,
+    value:Number
+  },
+  computed: {
+    count: {
+      get:function() {
+        return this.value;
+      },
+      set:function(value) {
+          this.$emit('input', value);
+      }
+    }
+  },
 
   data: function() {
+
     return {
       choice: "",
       result: "",
       incorrect: "",
-      correct: "",
-      judgement: false
+      judgement: false,
     }
   },
+
   methods: {
     showJudgement: function(choice) {
       this.choice = choice;
@@ -44,6 +60,7 @@ export default {
       let correct = this.questions[this.questionNum-1].answer;
       if(this.choice == correct) {
         this.result = "正解！！"
+        this.count++;
         this.incorrect = false;
       }else {
         this.result = "不正解！！"
