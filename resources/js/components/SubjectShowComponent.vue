@@ -8,27 +8,7 @@
       <div class="subjectQuestion_answer">
       <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
-
-      <div class="modal fade" id="result" tabindex="-1" aria-labelledby="questionResultLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="questionResultLabel">{{result}}</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <h6>解説</h6>
-              <div>{{questions[questionNum-1].explanation}}</div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="nextQuestion()">次の問題へ</button>
-              <button type="button" class="btn btn-dark"  data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="endQuestion()">終了する</button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <show-result-component ref="showResult" :questions="questions" :questionNum="questionNum" />
       <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
     </div>
   </div>
@@ -36,10 +16,12 @@
 
 <script>
 import FinalResultComponent from './FinalResultComponent.vue';
+import ShowResultComponent from './ShowResultComponent.vue';
 export default {
 
   components: {
-    FinalResultComponent
+    FinalResultComponent,
+    ShowResultComponent
   },
 
   props: {
@@ -56,7 +38,6 @@ export default {
       choices: [],
       totalChoices: "",
       answers: [],
-      result: "",
       correctCount: 0
     }
   },
@@ -96,13 +77,7 @@ export default {
     },
 
     showResult: function(answer) {
-      let correct = this.questions[this.questionNum-1].answer;
-      if(answer == correct) {
-        this.result = "正解！！";
-        this.correctCount++;
-      } else{
-        this.result = "不正解！！";
-      }
+      this.$refs.showResult.showResult(answer);
     },
 
     nextQuestion: function() {
