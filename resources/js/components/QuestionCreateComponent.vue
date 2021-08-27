@@ -14,6 +14,7 @@
             </div>
             <label for="QuestionText" class="col-form-label">問題文</label>
             <input type="text" class= "form-control" id="QuestionText" v-model="question.text">
+            <choice-create-component/>
             <label for="QuestionAnswer" class="col-form-label">解答</label>
             <input type="text" class= "form-control col-5" id="QuestionAnswer" v-model="question.answer">
             <label for="QuestionExplanation" class="col-form-label">解説</label>
@@ -29,7 +30,13 @@
 </template>
 
 <script>
+import ChoiceCreateComponent from './ChoiceCreateComponent.vue';
+
 export default {
+  components: { 
+    ChoiceCreateComponent
+  },
+  
   data: function(){
     return{
       subjects: [],
