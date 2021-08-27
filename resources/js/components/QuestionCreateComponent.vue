@@ -14,16 +14,8 @@
             </div>
             <label for="QuestionText" class="col-form-label">問題文</label>
             <input type="text" class= "form-control" id="QuestionText" v-model="question.text">
-            <label for="QuestionChoice1" class="col-form-label">選択肢1</label>
-            <input type="text" class= "form-control" id="QuestionChoice1" v-model="question.choice1">
-            <label for="QuestionChoice2" class="col-form-label">選択肢2</label>
-            <input type="text" class= "form-control" id="QuestionChoice2" v-model="question.choice2">
-            <label for="QuestionChoice3" class="col-form-label">選択肢3</label>
-            <input type="text" class= "form-control" id="QuestionChoice3" v-model="question.choice3">
-            <label for="QuestionChoice4" class="col-form-label">選択肢4</label>
-            <input type="text" class= "form-control" id="QuestionChoice4" v-model="question.choice4">
             <label for="QuestionAnswer" class="col-form-label">解答</label>
-            <input type="text" class= "form-control" id="QuestionAnswer" v-model="question.answer">
+            <input type="text" class= "form-control col-5" id="QuestionAnswer" v-model="question.answer">
             <label for="QuestionExplanation" class="col-form-label">解説</label>
             <textarea class= "form-control" id="QuestionExplanation" v-model="question.explanation"/>
           </div>
