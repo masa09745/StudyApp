@@ -57,7 +57,6 @@ export default {
     submit() {
       axios.post('/api/questions',this.question)
         .then((res) => {
-          console.log(res);
           this.$router.push({name: 'subject.index'});
         });
 

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Choice;
+
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\New_;
 
 class QuestionController extends Controller
 {
