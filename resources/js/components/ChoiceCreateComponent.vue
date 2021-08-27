@@ -10,16 +10,20 @@
 
 <script>
 export default {
+
+  props: {
+    choices: Array
+  },
+
   data: function(){
     return {
-      choices: [],
       choiceCount: 4
     }
   },
   methods: {
     addChoice: function() {
-      this.test++;
-      this.choices.push('');
+      this.choiceCount++;
+      this.choices.push();
     }
   }
 }
