@@ -9,10 +9,6 @@ class Question extends Model
 {
     protected $fillable = [
         'text',
-        'choice1',
-        'choice2',
-        'choice3',
-        'choice4',
         'answer',
         'explanation',
         'subject_id'
@@ -23,5 +19,10 @@ class Question extends Model
     public function Subject()
     {
        return $this->belongsTo(Subject::class);
+    }
+
+    public function Choices()
+    {
+        return $this->hasMany(Choice::class);
     }
 }
