@@ -13,13 +13,16 @@ class QuestionController extends Controller
 
     public function GetQuestionsBySubject($subjectId)
     {
-        $questions = DB::table('questions')
-        ->where([
-            ['subject_id', '=', $subjectId]
-        ])
-        ->get();
+        $questions = Question::where([['subject_id', '=', $subjectId]])->get();
 
         return $questions;
+    }
+
+    public function GetChoicesByQuestion($id)
+    {
+        $choices = Question::find($id)->choices;
+
+        return $choices;
     }
 
     public function index()
