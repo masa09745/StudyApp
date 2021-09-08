@@ -20,7 +20,6 @@ Route::group(['Middleware' => ['api']], function(){
   Route::resource('questions', 'QuestionController');
   
   Route::get('/subjects/{subjectId}/questions', [QuestionController::class, 'GetQuestionsBySubject']);
-  Route::get('/questions/{id}/choices', [QuestionController::class, 'GetChoicesByQuestion']);
 
 });
 

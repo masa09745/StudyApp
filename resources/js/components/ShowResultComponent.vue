@@ -16,7 +16,7 @@
             <div>{{questions[questionNum-1].explanation}}</div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="next">次の問題へ</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#totalResult" @click="next">次の問題へ</button>
             <button type="button" class="btn btn-dark"  data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="end">終了する</button>
           </div>
         </div>

@@ -3,7 +3,7 @@
     <div class="subjectQuestion" v-if="question">
       <h1 class="subjectQuestion_text">問題 {{questionNum}}. {{questions[questionNum-1].text}}</h1>
       <ul class="subjectQuestion_choice">
-        <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice}}</li>
+        <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice.content}}</li>
       </ul>
       <div class="subjectQuestion_answer">
       <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
@@ -58,14 +58,8 @@ export default {
     },
 
     getChoice: function(index) {
-      this.choices = [];
-      this.choices.push(
-        this.questions[index].choice1,
-        this.questions[index].choice2,
-        this.questions[index].choice3,
-        this.questions[index].choice4
-      );
-      this.totalChoices = this.choices.length;
+      this.choices = this.questions[index].choices;
+      this.totalChoices = this.choices.length
     },
 
     getAnwer: function() {
@@ -83,7 +77,7 @@ export default {
     nextQuestion: function() {
       if(this.questionNum < this.totalQuestion) {
         this.questionNum++;
-        this.getChoice(this.questionNum+1);
+        this.getChoice(this.questionNum-1);
       } else {
         this.$refs.finalResult.showFinalResult();
       }
