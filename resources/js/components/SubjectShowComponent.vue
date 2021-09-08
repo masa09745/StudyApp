@@ -6,7 +6,7 @@
         <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice.content}}</li>
       </ul>
       <div class="subjectQuestion_answer">
-      <button v-for="(answer, index) in answers" :key="index" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
+      <button  class="btn btn-lg btn-primary" v-for="(answer, index) in answers" :key="index" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
 
       <div class="questionResult" v-if="result">
