@@ -14,7 +14,13 @@
             </div>
             <label for="QuestionText" class="col-form-label">問題文</label>
             <input type="text" class= "form-control" id="QuestionText" v-model="question.text">
-            <choice-create-component :choices="question.choices"/>
+            <div>
+              <div class="choiceInput" v-for="n in choiceCount" :key="n">
+                <label for="QuestionChoice" class="col-form-label">選択肢{{n}}</label>
+                <input type="text" class= "form-control" id="QuestionChoice" v-model="question.choices[n-1]">
+              </div>
+              <button type="button" class="btn btn-primary" @click="addChoice">選択肢追加</button>
+            </div>
             <label for="QuestionAnswer" class="col-form-label">解答</label>
             <input type="text" class= "form-control col-5" id="QuestionAnswer" v-model="question.answer">
             <label for="QuestionExplanation" class="col-form-label">解説</label>
@@ -30,16 +36,13 @@
 </template>
 
 <script>
-import ChoiceCreateComponent from './ChoiceCreateComponent.vue';
 
 export default {
-  components: {
-    ChoiceCreateComponent
-  },
 
   data: function(){
     return{
       subjects: [],
+      choiceCount: 4,
       question: {
         choices: []
       }
@@ -52,6 +55,11 @@ export default {
         .then((res) => {
           this.subjects = res.data;
         });
+    },
+
+    addChoice: function() {
+      this.choiceCount++;
+      this.question.choices.push();
     },
 
     submit() {
@@ -69,3 +77,9 @@ export default {
 
 }
 </script>
+
+<style>
+.choiceInput{
+  margin-bottom: 10px;
+}
+</style>
