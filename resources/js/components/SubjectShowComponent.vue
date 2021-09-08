@@ -6,36 +6,33 @@
         <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice.content}}</li>
       </ul>
       <div class="subjectQuestion_answer">
-      <button v-for="(answer, index) in answers" :key="index" class="btn btn-lg btn-primary" data-toggle="modal" data-target="#result"  @click="showResult(answer)">({{index+1}}) {{answer}}</button>
+      <button v-for="(answer, index) in answers" :key="index" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
 
-      <div class="modal fade" id="result" tabindex="-1" aria-labelledby="questionResultLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
+      <div class="questionResult" v-if="result">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="questionResultLabel">{{result}}</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h4 class="modal-title" id="questionResultLabel">{{judgement}}</h4>
           </div>
           <div class="modal-body">
             <h6>＜解説＞</h6>
             <div>{{questions[questionNum-1].explanation}}</div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" data-dismiss="modal" data-target="#totalResult" @click="nextQuestion()">次の問題へ</button>
-            <button type="button" class="btn btn-dark"  data-dismiss="modal" data-toggle="modal" data-target="#totalResult" @click="endQuestion()">終了する</button>
+            <button type="button" class="btn btn-primary" @click="nextQuestion()">次の問題へ</button>
+            <button type="button" class="btn btn-dark" @click="endQuestion()">終了する</button>
           </div>
         </div>
       </div>
-    </div>
-      <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
-    </div>
+  </div>
+  <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
   </div>
 </template>
 
 <script>
+
 import FinalResultComponent from './FinalResultComponent.vue';
+
 export default {
 
   components: {
@@ -56,23 +53,24 @@ export default {
       choices: [],
       totalChoices: "",
       answers: [],
-      result:"",
+      judgement:"",
+      result: false,
       correctCount: 0
     }
   },
   created() {
-    this.gesQuestions();
+    this.getQuestions();
   },
 
   methods: {
-    gesQuestions() {
+    getQuestions() {
       axios.get('/api/subjects/' + this.subjectId + '/questions')
         .then ((res) => {
           this.questions = res.data;
           this.totalQuestion = this.questions.length;
           this.question = true;
           this.getChoice(this.questionNum-1);
-          this.getAnwer();
+          this.getAnswer();
         });
     },
 
@@ -81,7 +79,7 @@ export default {
       this.totalChoices = this.choices.length
     },
 
-    getAnwer: function() {
+    getAnswer() {
       this.answers = [];
       let i=1;
       for(i=1; i<=this.totalChoices; i++){
@@ -91,23 +89,27 @@ export default {
 
     showResult: function(answer) {
       let correct = this.questions[this.questionNum-1].answer;
+      this.result = true;
       if(answer == correct) {
-        this.result = "正解！！";
+        this.judgement = "正解！！";
       } else {
-        this.result = "不正解！！";
+        this.judgement = "不正解！！";
       }
     },
 
-    nextQuestion: function() {
+    nextQuestion() {
       if(this.questionNum < this.totalQuestion) {
         this.questionNum++;
+        this.result = false;
         this.getChoice(this.questionNum-1);
       } else {
+        this.result = false;
         this.$refs.finalResult.showFinalResult();
       }
     },
 
-    endQuestion: function() {
+    endQuestion() {
+      this.result = false;
       this.$refs.finalResult.showFinalResult();
     }
 
