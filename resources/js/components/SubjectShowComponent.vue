@@ -102,6 +102,7 @@ export default {
       this.result = true;
       if(answer == correct) {
         this.judgement = "正解！！";
+        this.correctCount++;
       } else {
         this.judgement = "不正解！！";
       }
