@@ -8,11 +8,12 @@
       <div class="subjectQuestion_answer">
       <button  class="btn btn-lg btn-primary" v-for="(answer, index) in answers" :key="index" @click="showResult(answer)">({{index+1}}) {{answer}}</button>
       </div>
-
-      <div class="questionResult" v-if="result">
+    </div>
+    <div class="questionResult" v-if="result">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title" id="questionResultLabel">{{judgement}}</h4>
+            <h4 class="modal-title">{{judgement}}</h4>
           </div>
           <div class="modal-body">
             <h6>＜解説＞</h6>
@@ -24,20 +25,28 @@
           </div>
         </div>
       </div>
-  </div>
-  <final-result-component ref="finalResult" :totalCorrect="correctCount"/>
+    </div>
+    <div class="finalResult" v-if="finalResult">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">結果発表</h5>
+          </div>
+          <div class="modal-body">
+            <h6>{{correctCount}}問正解！！</h6>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">リトライ</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 
-import FinalResultComponent from './FinalResultComponent.vue';
-
 export default {
-
-  components: {
-    FinalResultComponent,
-  },
 
   props: {
     subjectId: String
@@ -55,6 +64,7 @@ export default {
       answers: [],
       judgement:"",
       result: false,
+      finalResult: false,
       correctCount: 0
     }
   },
@@ -104,13 +114,14 @@ export default {
         this.getChoice(this.questionNum-1);
       } else {
         this.result = false;
-        this.$refs.finalResult.showFinalResult();
+        this.finalResult = true;
       }
     },
 
     endQuestion() {
       this.result = false;
-      this.$refs.finalResult.showFinalResult();
+      this.finalResult = true;
+
     }
 
   }
@@ -121,6 +132,7 @@ export default {
 .subjectQuestion{
   width: 600px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .subjectQuestion_text{
@@ -129,8 +141,8 @@ export default {
 
 .subjectQuestion_choice{
   list-style: none;
-  font-size: 30px;
-  margin-top: 1rem;
+  font-size: 26px;
+  margin: 1.5rem 1rem;
 }
 
 .subjectQuestion_answer{
@@ -138,5 +150,27 @@ export default {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+}
+
+.questionResult{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  transition: 1s all linear;
+  background-color: rgba(51,51,51,0.7);
+}
+
+.finalResult{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  transition: 1s all linear;
+  background-color: rgba(51,51,51,0.7);
 }
 </style>
