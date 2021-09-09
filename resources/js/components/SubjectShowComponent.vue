@@ -16,6 +16,7 @@
             <h4 class="modal-title">{{judgement}}</h4>
           </div>
           <div class="modal-body">
+            <h5 v-if="incorrect">正解は{{correct}}です</h5>
             <h6>＜解説＞</h6>
             <div>{{questions[questionNum-1].explanation}}</div>
           </div>
@@ -64,6 +65,7 @@ export default {
       answers: [],
       judgement:"",
       result: false,
+      incorrect: false,
       finalResult: false,
       correctCount: 0
     }
@@ -105,6 +107,8 @@ export default {
         this.correctCount++;
       } else {
         this.judgement = "不正解！！";
+        this.incorrect = true;
+        this.correct = correct;
       }
     },
 
