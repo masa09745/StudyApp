@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Question extends Model
 {
     protected $fillable = [
-        'content'
+        'text',
+        'answer',
+        'explanation',
+        'subject_id'
     ];
 
     use HasFactory;
@@ -16,5 +19,10 @@ class Question extends Model
     public function Subject()
     {
        return $this->belongsTo(Subject::class);
+    }
+
+    public function Choices()
+    {
+        return $this->hasMany(Choice::class);
     }
 }

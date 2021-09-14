@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuestionController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['Middleware' => ['api']], function(){
-  Route::resource('exams', 'ExamController');
+  Route::resource('subjects', 'SubjectController');
+  Route::resource('questions', 'QuestionController');
+  
+  Route::get('/subjects/{subjectId}/questions', [QuestionController::class, 'GetQuestionsBySubject']);
 
 });
 

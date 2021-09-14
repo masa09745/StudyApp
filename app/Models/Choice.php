@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class Exam extends Model
+class Choice extends Model
 {
     protected $fillable = [
-        'date'
+        'content',
+        'question_id'
+
     ];
 
-    public function Subjects()
-    {
-        return $this->hasMany(Subject::class);
-    }
-
     use HasFactory;
+
+    public function Question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

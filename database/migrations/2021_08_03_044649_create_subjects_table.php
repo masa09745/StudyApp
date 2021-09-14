@@ -16,8 +16,6 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('route');
-            $table->foreignId('exam_id');
             $table->timestamps();
         });
     }

@@ -8,11 +8,11 @@ require('./bootstrap');
 import Vue from "vue";
 import VueRouter from 'vue-router';
 import HeaderComponent from "./components/HeaderComponent";
-import ExamListComponent from "./components/ExamListComponent";
-import ExamCreateComponent from "./components/ExamCreateComponent";
-import ExamShowComponent from "./components/ExamShowComponent";
-import ExamEditComponent from "./components/ExamEditComponent";
+import SubjectIndexComponent from "./components/SubjectIndexComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
+import QuestionIndexComponent from "./components/QuestionIndexComponent";
+import QuestionCreateComponent from "./components/QuestionCreateComponent";
+import ExamEditComponent from "./components/ExamEditComponent";
 
 window.Vue = require('vue').default;
 
@@ -22,30 +22,28 @@ const router = new VueRouter({
     mode: 'history',
     routes: [
         {
-            path: '/exams',
-            name: 'exam.list',
-            component: ExamListComponent
+            path: '/top',
+            name: 'subject.index',
+            component: SubjectIndexComponent
         },
 
         {
-            path: '/exams/create',
-            name: 'exam.create',
-            component: ExamCreateComponent
-        },
-
-        {
-            path: '/exams/:examId',
-            name: 'exam.show',
-            component: ExamShowComponent,
+            path: '/subjects/:subjectId',
+            name: 'subject.show',
+            component: SubjectShowComponent,
             props: true,
-            children: [
-                {
-                    path: ':subjectName',
-                    name: 'subject.show',
-                    component: SubjectShowComponent,
-                    props: true,
-                }
-            ]
+        },
+
+        {
+            path: '/questions',
+            name: 'question.index',
+            component: QuestionIndexComponent
+        },
+
+        {
+            path: '/questions/create',
+            name: 'question.create',
+            component: QuestionCreateComponent
         },
 
         {
