@@ -4,6 +4,9 @@
       <div class="col-sm-6">
         <form v-on:submit.prevent="submit">
           <h4 class="title border-bottom">過去問作成</h4>
+          <div>
+            <router-link v-bind:to="{name: 'question.upload'}">問題・選択肢データのアップロードはこちら</router-link>
+          </div>
           <div class="form-group">
             <label for="QuestionSubject" class="col-form-label">科目</label>
             <div >
