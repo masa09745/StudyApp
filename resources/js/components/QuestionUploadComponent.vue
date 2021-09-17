@@ -5,9 +5,11 @@
         <h4 class="border-bottom">過去問データアップロード</h4>
         <div class="uploadArea">
           <label>
-            <input type="file" class="uploadFile">ファイルを選択
+            <input type="file" class="uploadFile" @change="fileSelect">問題データを選択
           </label>
         </div>
+        <p v-if="fileExist">{{fileName}}</p>
+        <p v-else>ファイルが選択されていません</p>
         <button type="submit" class="btn btn-primary">アップロード</button>
       </div>
     </div>
@@ -17,7 +19,21 @@
 
 <script>
 export default {
+  data: function() {
+    return {
+      fileData: "",
+      fileName: "",
+      fileExist: false
+    }
+  },
   
+  methods: {
+    fileSelect(event){
+      this.fileExist = true;
+      this.fileData = event.target.files[0]
+      this.fileName = event.target.files[0].name
+    }
+  }
 }
 </script>
 
