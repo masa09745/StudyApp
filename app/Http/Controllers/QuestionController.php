@@ -36,4 +36,9 @@ class QuestionController extends Controller
             $choiceContent->save();
         }
     }
+
+    public function UploadQuestionsData()
+    {
+
+    }
 }
