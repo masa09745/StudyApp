@@ -40,7 +40,7 @@ class QuestionController extends Controller
         }
     }
 
-    public function UploadQuestionsData()
+    public function ImportQuestionsData()
     {
 
     }
