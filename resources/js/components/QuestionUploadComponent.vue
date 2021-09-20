@@ -20,14 +20,15 @@
 export default {
   data: function() {
     return {
+      questionFile: null,
       fileName: ""
     }
   },
   
   methods: {
-    fileSelect(event){
-      let fileData = event.target.files[0];
-      this.fileName = fileData.name;
+    fileSelect(e){
+      this.questionFile = e.target.files[0];
+      this.fileName = this.questionFile.name;
       }
     }
 }
