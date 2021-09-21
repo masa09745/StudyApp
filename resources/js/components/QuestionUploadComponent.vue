@@ -9,7 +9,7 @@
           </label>
         </div>
         <p>{{fileName}}</p>
-        <button type="submit" class="btn btn-primary">アップロード</button>
+        <button type="button" @click="sendFile" class="btn btn-primary">アップロード</button>
       </div>
     </div>
 
@@ -29,8 +29,18 @@ export default {
     fileSelect(e){
       this.questionFile = e.target.files[0];
       this.fileName = this.questionFile.name;
-      }
+      },
+    sendFile() {
+      let formdata = new FormData();
+      formdata.append('csv_file', this.questionFile);
+      axios.post('/api/questions/upload', formdata)
+        .then((res) => {
+          console.log(res);
+          this.questionFile = null;
+          this.fileName = "";
+        });
     }
+  }
 }
 </script>
 
