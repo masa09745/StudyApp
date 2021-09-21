@@ -7,7 +7,7 @@ use App\Models\Question;
 use Illuminate\Http\Request;
 use Goodby\CSV\Import\Standard\Lexer;
 use Goodby\CSV\Import\Standard\Interpreter;
-use GoodBy\CSV\Import\Standard\LexerConfig;
+use Goodby\CSV\Import\Standard\LexerConfig;
 
 class QuestionController extends Controller
 {
@@ -40,8 +40,32 @@ class QuestionController extends Controller
         }
     }
 
-    public function ImportQuestionsData()
+    public function ImportQuestionsData(Request $request)
     {
+        $tmpName = mt_rand().".".$request->file('csv_file')->guessExtension();
+        $request->file('csv_file')->move(public_path(). "/csv/tmp", $tmpName);
+        $tmpPath = public_path()."/csv/tmp/".$tmpName;
+
+        $config = new LexerConfig();
+        $lexer = new Lexer($config);
+
+
+        $config->setIgnoreHeaderLine(true);
+
+        $dataList = [];
+
+        $interpreter = new Interpreter();
+        $interpreter->addObserver(function (array $row) use (&$dataList) {
+            $dataList[] = $row;
+        });
+
+        $lexer->parse($tmpPath, $interpreter);
+
+        unlink($tmpPath);
+
+        foreach($dataList as $row) {
+            Question::insert(['id' => $row[0], 'text' => $row[1], 'answer' => $row[2], 'explanation' => $row[3], 'subject_id' => $row[4]]);
+        }
 
     }
 }
