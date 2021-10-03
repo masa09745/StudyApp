@@ -12,6 +12,7 @@ import SubjectIndexComponent from "./components/SubjectIndexComponent";
 import SubjectShowComponent from "./components/SubjectShowComponent";
 import QuestionIndexComponent from "./components/QuestionIndexComponent";
 import QuestionCreateComponent from "./components/QuestionCreateComponent";
+import QuestionUploadComponent from "./components/QuestionUploadComponent";
 import ExamEditComponent from "./components/ExamEditComponent";
 
 window.Vue = require('vue').default;
@@ -44,6 +45,12 @@ const router = new VueRouter({
             path: '/questions/create',
             name: 'question.create',
             component: QuestionCreateComponent
+        },
+
+        {
+            path: '/questions/upload',
+            name: 'question.upload',
+            component: QuestionUploadComponent
         },
 
         {
