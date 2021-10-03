@@ -4,7 +4,7 @@
       <div class="col-md-4">
         <h4 class="border-bottom">過去問データアップロード</h4>
         <div class="uploadArea">
-          <label>
+          <label class="uploadButton">
             <input type="file" class="uploadFile" @change="fileSelect" accept=".csv">問題データを選択
           </label>
         </div>
@@ -52,7 +52,7 @@ export default {
   display: none;
 }
 
-label {
+.uploadButton {
   color: black;
   background-color: white;
   cursor: pointer;
