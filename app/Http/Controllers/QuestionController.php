@@ -22,7 +22,6 @@ class QuestionController extends Controller
     public function index()
     {
         return Question::all();
-
     }
 
     public function store(Request $request)
@@ -64,8 +63,16 @@ class QuestionController extends Controller
         unlink($tmpPath);
 
         foreach($dataList as $row) {
-            Question::insert(['id' => $row[0], 'text' => $row[1], 'answer' => $row[2], 'explanation' => $row[3], 'subject_id' => $row[4]]);
-        }
+            Question::insert([
+                'id' => $row[0],
+                'text' => $row[1],
+                'answer' => $row[2],
+                'explanation' => $row[3],
+                'subject_id' => $row[4],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        };
 
     }
 }
