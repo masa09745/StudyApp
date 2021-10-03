@@ -58,7 +58,7 @@ export default {
     sendChoice() {
       let formdata = new FormData();
       formdata.append('csv_file', this.questionFile);
-      axios.post('/api/questions/upload', formdata)
+      axios.post('/api/choices/upload', formdata)
         .then((res) => {
           console.log(res);
           this.questionFile = null;
