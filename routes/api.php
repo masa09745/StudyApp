@@ -21,6 +21,7 @@ Route::group(['Middleware' => ['api']], function(){
   
   Route::get('/subjects/{subjectId}/questions', [QuestionController::class, 'GetQuestionsBySubject']);
   Route::post('/questions/upload', [QuestionController::class, 'ImportQuestionsData']);
+  Route::post('/choices/upload', [QuestionController::class, 'ImportChoicesData']);
 
 });
 
