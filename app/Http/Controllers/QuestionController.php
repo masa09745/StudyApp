@@ -75,4 +75,39 @@ class QuestionController extends Controller
         };
 
     }
+
+    public function ImportChoicesData(Request $request)
+    {
+        $tmpName = mt_rand().".".$request->file('csv_file')->guessExtension();
+        $request->file('csv_file')->move(public_path(). "/csv/tmp", $tmpName);
+        $tmpPath = public_path()."/csv/tmp/".$tmpName;
+
+        $config = new LexerConfig();
+        $lexer = new Lexer($config);
+
+
+        $config->setIgnoreHeaderLine(true);
+
+        $dataList = [];
+
+        $interpreter = new Interpreter();
+        $interpreter->addObserver(function (array $row) use (&$dataList) {
+            $dataList[] = $row;
+        });
+
+        $lexer->parse($tmpPath, $interpreter);
+
+        unlink($tmpPath);
+
+        foreach($dataList as $row) {
+            Choice::insert([
+                'id' => $row[0],
+                'content' => $row[1],
+                'question_id' => $row[2],
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        };
+
+    }
 }
