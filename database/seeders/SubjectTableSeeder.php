@@ -16,16 +16,28 @@ class SubjectTableSeeder extends Seeder
     {
         DB::table('Subjects')->insert([
             [
-                'name' => '法規'
+                'id' => '1',
+                'name' => '法規',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => '機体'
+                'id' => '2',
+                'name' => '機体',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => '発動機'
+                'id' => '3',
+                'name' => '発動機',
+                'created_at' => now(),
+                'updated_at' => now()
             ],
             [
-                'name' => '電気・電子装備品'
+                'id' => '4',
+                'name' => '電気・電子装備品',
+                'created_at' => now(),
+                'updated_at' => now()
             ]
         ]);
     }

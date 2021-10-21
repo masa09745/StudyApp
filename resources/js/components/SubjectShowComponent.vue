@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="subjectQuestion" v-if="question">
-      <h1 class="subjectQuestion_text">問題 {{questionNum}}. {{questions[questionNum-1].text}}</h1>
+      <h3 class="subjectQuestion_text">問題 {{questionNum}}. {{questions[questionNum-1].text}}</h3>
       <ul class="subjectQuestion_choice">
         <li  v-for="(choice, index) in choices" :key="index" >{{index+1}}. {{choice.content}}</li>
       </ul>
@@ -146,7 +146,7 @@ export default {
 
 .subjectQuestion_choice{
   list-style: none;
-  font-size: 26px;
+  font-size: 21px;
   margin: 1.5rem 1rem;
 }
 
